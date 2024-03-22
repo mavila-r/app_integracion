@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Detalle</title>  
+    <script src="../javascript/funcion_principal.js"></script> <!--Para vincular con función principal-->
+    <script src="../javascript/cargar_info_json.js"></script> <!--Para vincular con función para cargar información guardada en un json-->
+    <script src="../javascript/estilos_texto.js"></script> <!--Javascript con funciones para incorporar etiquetas de texto en cada apartado del formulario-->
+    <script src="../javascript/funciones_formulario.js"></script> <!--Javascript para que EN ESTE FORMULARIO, aparezca la opción de insertar imagen o la de insertar ejemplo dinámico, añadir apartados, etc.-->
+    <link rel="stylesheet" href="../../CSS/plantilla.css"> <!--Para vincular estilos a este formulario-->
+
+    <style>
+        /*Para que aparezcan los campos en función del tipo de ejemplo que se seleccione*/
+        #ejemplo-con-imagen, #ejemplo-dinamico, #ejemplo-con-iframe { /*En principio, estos div tienen display none, pero esto cambia con javascript según la opción de radio que se seleccione gracias a la función aparecerElemento()*/
+            display: none;
+        }
+
+        /*Para ocultar inicialmente la parte de añadir ejemplo / añadir botones*/
+        .introducirEjemplo, .introducirSubejemplo, .inicialmenteInvisible {
+            display: none;
+        }
+
+
+        /*A partir de aquí los estilos son solo por estética*/
+        body { 
+            background-color: #307797;
+        }
+
+        /* #estetica {
+            background-color: white;
+            width: 50%;
+            margin: auto;;
+            padding: 10px 50px;
+            overflow: hidden;
+            border-radius: 15px;
+        } */
+
+        .posicionamiento {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .botones_estilos {
+            display: flex;
+            flex-direction: column;
+        }
+
+        textarea {
+            width: 98.5%;
+        }
+
+        fieldset {
+            border-radius: 10px;
+        }
+
+        /* .estilo {
+            padding: 10px;
+            font-size: 15pt;
+            border-radius: 10px;
+            background-color: #307797;
+            color: white;
+        }
+
+        .estilo:hover {
+            background-color: #427f9b;
+        } */
+
+        h2 {
+            color: #0e5779;
+            text-align: center;
+        }
+
+        select {
+            width: 30%;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="estetica"> 
+
+    <!--CABECERA-->
+    <div id="header">
+        <div>
+            <a href="https://www.malaga.eu/">
+                <img class="ayuntamiento" src="../../img/logo-imf-1.png" alt="ayuntamiento 1" />
+            </a>
+            <a href="https://imfe.malaga.eu/">
+                <img class="imfe" src="../../img/logo-imfe-ok-2019-1.png" alt="imfe 1" />
+            </a>
+        </div>
+
+        <div id="eliPagInt">
+            <a href="../../principal.html">
+                <img class="logonosotros3 logo_bajado" src="../../img/logo.svg" alt="logo grupo"
+                    title="Ir a página principal del tutorial" />
+            </a>
+        </div>
+
+    </div>
+<hr>
+
+    <h2>CREAR NUEVA PÁGINA DE DETALLE</h2>
+
+    <!-- Input para cargar archivo JSON de la página INTERMEDIA-->
+    <fieldset>
+        <legend style="color:red">* Inserte aquí el JSON que le salió al hacer la página intermedia</legend>
+        <input type="file" id="archivoJSON-Intermedio" accept=".json" onchange="cargarIntermedioDesdeDetalle()"> <!--Aquí es dónde se carga el archivo, que tiene que ser .json-->
+    </fieldset>
+
+    <br>
+
+    <!-- Input para cargar archivo JSON de página de DETALLE-->
+    <fieldset>
+        <legend style="color:red">* ¿Quieres modificar una página de detalle ya existente?</legend>
+        <input type="file" id="archivoJSON" accept=".json" onchange="cargar()"> <!--Aquí es dónde se carga el archivo, que tiene que ser .json-->
+    </fieldset>
+
+    <br>
+
+     <!--Para la función eligePaginaIntermedia(tipoPaginaIntermedia);-->
+     <fieldset id="paginaIntermedio" style="display: none;">
+        <legend>Nombre página intermedia</legend>
+        <label for="intermedio">Seleccione la página intermedia que va a hacer:</label><br>
+    </fieldset>
+
+    <br>
+
+    <!--Titulo principal-->
+    <fieldset>
+        <legend>Título principal:</legend>
+        <label for="titulo">Introducir título de la página:</label>
+        <input type="text" id="titulo"> <!--Este campo aparece inicialmente para que la persona haga pruebas libres de posibles títulos, pero desaparece cuando carga un json de página intermedia-->
+
+        <select id="selectTitulo" onchange="nombreArchivo()" style="display: none;"> <!--Select vacío en el que se van introducciendo las opciones al cargar un archivo json intermedio-->
+            <option value="">Selecciona un título</option>
+        </select>
+    </fieldset>
+
+    <br>
+
+    <!--Nombre del archivo -- Importante para guardar el documento, y para el botón de inténtalo tú mismo-->
+    <fieldset>
+        <legend>Elige el nombre del archivo:</legend>
+        <input type="text" id="nombre-archivo" required>
+        <p style="color:rgb(180, 51, 51)">Importante: sin .html. Si tiene varias palabras, unir con barra baja. Ejemplo: font_face</p>
+    </fieldset>
+
+    <br>
+
+    <!--Orientaciones pedagógicas-->
+    <fieldset>
+        <legend>Orientaciones pedagógicas:</legend>
+        <label for="orientaciones">Introducir aquí las orientaciones pedagógicas:</label> <br>
+        <div class="posicionamiento"> <!--Para que los botones de estilos aparezcan a la derecha-->
+            <div>
+            <textarea name="orientaciones" id="orientaciones" cols="60" rows="15" required></textarea>
+            </div>
+
+            <div class="botones_estilos">
+                <button onclick="ponerNegrita('orientaciones')"> <img src="../imagenes/negrita.png" alt="Negrita" title="Negrita" width="10px"> </button> 
+                <button onclick="ponerCursiva('orientaciones')"> <img src="../imagenes/cursiva.png" alt="Cursiva" title="Cursiva" width="10px"> </button>
+                <button onclick="ponerSubrayado('orientaciones')"> <img src="../imagenes/subrayado.png" alt="Subrayado" title="Subrayado" width="10px"> </button>
+                <button onclick="ponerEnlacesDentro('orientaciones')"> <img src="../imagenes/enlace.png" alt="Enlace" title="Enlace" width="10px"> </button> <!--En este caso, los enlaces se abren en la propia página-->
+                <button onclick="ponerEstiloPre('orientaciones')"> <img src="../imagenes//estilo.png" alt="Estilo" title="Estilo" width="10px"> </button>
+                <br>
+            </div>
+        </div>
+    </fieldset>
+
+    <br>
+
+    <!--NUEVO APARTADO - PARTE PRINCIPAL-->
+    <fieldset>
+    <legend>Nuevo Apartado:</legend>
+
+    <div id="apartado" class="contenedorApartados"> <!--Esta clase es muy importante para ir iterando por los apartados-->
+        
+        <div id="nuevos-apartado">  <!--PARA AÑADIR NUEVOS INPUT DE TÍTULOS Y CONTENIDOS-->
+            <label for="titulosApartados">Nuevo título 1:</label> <br>
+            <input type="text" id="titulosApartados" class="titulo">
+            
+            <br><br>
+
+            <label for="contenido">Nuevo contenido 1:</label> <br> 
+
+            <div class="posicionamiento"> <!--Para que los botones de estilos aparezcan a la derecha-->
+                <div>
+                    <textarea class="contenido" id="contenido" cols="60" rows="15"></textarea> <br>
+                </div>
+
+                <div class="botones_estilos">
+                    <button onclick="ponerNegrita('contenido')"> <img src="../imagenes/negrita.png" alt="Negrita" title="Negrita" width="10px"> </button> 
+                    <button onclick="ponerCursiva('contenido')"> <img src="../imagenes/cursiva.png" alt="Cursiva" title="Cursiva" width="10px"> </button>
+                    <button onclick="ponerSubrayado('contenido')"> <img src="../imagenes/subrayado.png" alt="Subrayado" title="Subrayado" width="10px"> </button>
+                    <button onclick="ponerEnlace('contenido')"> <img src="../imagenes/enlace.png" alt="Enlace" title="Enlace" width="10px"> </button>
+                    <button onclick="ponerEstiloPre('contenido')"> <img src="../imagenes//estilo.png" alt="Estilo" title="Estilo" width="10px"> </button>
+                    <br>
+                </div>
+            </div>
+        </div>
+  
+        <br>
+
+        <input type="checkbox" class="casilla-ejemplo" id="casilla-ejemplo" onclick="aparecerElemento(this, 'introducirEjemplo')">  <label for="casilla-ejemplo">¿Quieres incorporar un ejemplo?</label> <!--Al checkear la casilla, aparece el div que contiene los campos para el ejemplo-->
+
+        <div id="introducirEjemplo" class="introducirEjemplo">
+            <br>
+
+            <label for="contenidoHTML">1. Añade aquí el contenido de la izquierda:</label> <br><br>
+
+            <input type="checkbox" class="escribir-HTML" onclick="aparecerElemento(this, 'parrafo-info-html')">¿Quieres mostrar el código HTML como texto? <br><br> <!--Para saber si la persona quiere escribir, en el contenedor de la izquierda (azul), código html-->
+
+            <div class="posicionamiento">
+                <div>   
+                <textarea class="contenidoHTML" id="contenidoHTML" cols="60" rows="15"></textarea>  <!--AQUÍ ES DÓNDE VA EL CONTENIDO DEL BLOQUE DE LA IZQUIERDA-->
+                </div>
+
+                <div class="botones_estilos">
+                    <button onclick="ponerNegrita('contenidoHTML')"> <img src="../imagenes/negrita.png" alt="Negrita" title="Negrita" width="10px"> </button> 
+                    <button onclick="ponerCursiva('contenidoHTML')"> <img src="../imagenes/cursiva.png" alt="Cursiva" title="Cursiva" width="10px"> </button>
+                    <button onclick="ponerSubrayado('contenidoHTML')"> <img src="../imagenes/subrayado.png" alt="Subrayado" title="Subrayado" width="10px"> </button>
+                    <button onclick="ponerEnlace('contenidoHTML')"> <img src="../imagenes/enlace.png" alt="Enlace" title="Enlace" width="10px"> </button>
+                    <button onclick="ponerEstiloPre('contenidoHTML')"> <img src="../imagenes//estilo.png" alt="Estilo" title="Estilo" width="10px"> </button>
+                    <br>
+                </div>
+            </div> 
+            <p id="parrafo-info-html" style="color:rgb(180, 51, 51); display:none;">Nota: añade el contenido HTML entero, incorporando el &lt;!DOCTYPE&gt;, &lt;html&gt;, etc.</p> <!--Aparece al checkear la casilla de mostrar el código HTML-->
+            
+            <!--Para seleccionar si quieres añadir una imagen, un ejemplo dinámico o un iframe-->
+
+            <p>2. Selecciona si quieres incorporar una imagen, un ejemplo dinámico o un iframe:</p> <!--En principio, todos los divs tienen el display none, pero esto cambia con javascript según la opción de radio que se seleccione-->
+
+            <input type="radio" class="elegir-ejemplo" name="elegir-ejemplo1" value="IMAGEN" id="elegir-imagen" onclick="mostrarDiv('ejemplo-con-imagen', 'ejemplo-dinamico', 'ejemplo-con-iframe')"> <!--Llama a la función con el id correspondiente al div que queremos mostrar, y el id correspondiente al div que queremos ocultar-->
+            <label for="elegir-imagen">Insertar imagen</label> <br>
+
+            <input type="radio" class="elegir-ejemplo" name="elegir-ejemplo1" value="DINAMICO" id="elegir-ejemplo-dinamico" onclick="mostrarDiv('ejemplo-dinamico', 'ejemplo-con-imagen', 'ejemplo-con-iframe')"> <!--Llama a la función con el id correspondiente al div que queremos mostrar, y el id correspondiente al div que queremos ocultar-->
+            <label for="elegir-ejemplo-dinamico">Insertar ejemplo dinámico</label><br>
+            
+            <input type="radio" class="elegir-ejemplo" name="elegir-ejemplo1" value="IFRAME" id="elegir-iframe" onclick="mostrarDiv('ejemplo-con-iframe', 'ejemplo-con-imagen', 'ejemplo-dinamico')"> <!--La función mostrarDIV es para mostrar y ocultar el apartado que sale en caso de seleccionar cada opción-->
+            <label for="elegir-iframe">Insertar iframe</label>
+
+
+            <!--PARA INSERTAR IMAGEN (Aparece en caso de haber seleccionado insertar imagen)-->
+            <div id="ejemplo-con-imagen" class="ejemplo-con-imagen" style="display: none; margin-left:20px;">
+                <p>Añade aquí la imagen de ejemplo:</p> 
+                <input type="file" class="imagen imagenPrincipal" onchange="cargarImagen(0)">  
+
+                <p class="informacion-imagen" style="color:Red"></p>
+                
+                <br>
+
+                <label for="anchoImagen">Ancho imagen:</label>
+                <input type="number" name="anchoImagen" id="anchoImagen" class="anchoImagen"> 
+                <select name="medidaAnchoImagen" class="medidaAnchoImagen">
+                    <option value="%">%</option>
+                    <option value="px">px</option>
+                    <option value="em">em</option>
+                </select><br><br>
+
+                <label for="altoImagen">Alto imagen:</label>
+                <input type="number" name="altoImagen" id="altoImagen" class="altoImagen"> 
+                <select name="medidaAltoImagen" class="medidaAltoImagen">
+                    <option value="%">%</option>
+                    <option value="px">px</option>
+                    <option value="em">em</option>
+                </select>
+
+                <p>¿Quieres insertar botón de "inténtalo tú mismo"?</p>
+
+                <input type="checkbox" id="insertar-boton-intentalo-imagen" class="botonIntentalo" value="añadirBoton">
+                <label for="insertar-boton-intentalo-imagen">Insertar botón de "inténtalo tú mismo"</label>
+
+                <br><br>
+            </div>
+
+            <!--PARA INSERTAR EJEMPLO DINAMICO (aparece en caso de hacer seleccionado insertar ejemplo dinámico)-->
+            <div id="ejemplo-dinamico" class="ejemplo-dinamico" style="display: none; margin-left:20px;">
+
+                <!--PARA INSERTAR BOTÓN DE "INTÉNTALO TÚ MISMO"-->
+                <p>¿Quieres insertar botón de "inténtalo tú mismo"?</p>
+
+                <input type="checkbox" id="insertar-boton-intentalo-dinamico" class="botonIntentalo2" value="añadirBoton">
+                <label for="insertar-boton-intentalo-dinamico">Insertar botón de "inténtalo tú mismo"</label>
+            </div>
+
+
+            <!--PARA INSERTAR EJEMPLO CON IFRAME (aparece en caso de haber seleccionado insertar iframe)-->
+            <div id="ejemplo-con-iframe" class="ejemplo-con-iframe" style="display: none; margin-left:20px;">
+                <p>¿Qué quieres insertar?</p>
+
+                <input type="radio" class="elegir-iframe" name="elegir-iframe1" value="PAGINA" id="elegir-pagina" onclick="mostrarDiv('pagina-externa', 'iframe-archivo', 'iframe-incrustar')"> <!--Llama a la función con el id correspondiente al div que queremos mostrar, y el id correspondiente al div que queremos ocultar-->
+                <label for="elegir-pagina">Insertar página externa</label> <br>
+
+                <input type="radio" class="elegir-iframe" name="elegir-iframe1" value="ARCHIVO" id="elegir-archivo" onclick="mostrarDiv('iframe-archivo', 'pagina-externa', 'iframe-incrustar')"> <!--Llama a la función con el id correspondiente al div que queremos mostrar, y el id correspondiente al div que queremos ocultar-->
+                <label for="elegir-archivo">Insertar archivo</label><br>
+                
+                <input type="radio" class="elegir-iframe" name="elegir-iframe1" value="INCRUSTAR" id="elegir-incrustar" onclick="mostrarDiv('iframe-incrustar', 'pagina-externa', 'iframe-archivo')"> <!--La función mostrarDIV es para mostrar y ocultar el apartado que sale en caso de seleccionar cada opción-->
+                <label for="elegir-incrustar">Incrustar código (por ejemplo, de Youtube)</label>
+
+
+                <!--Insertar página externa-->
+                <div id="pagina-externa" style="display: none; margin-left:40px;"> 
+                    <p>Añade aquí la dirección de la página <ins>externa</ins> que quieras insertar como iframe:</p>
+                    <input type="text" class="direccion-iframe">
+                </div>
+
+                <!--Insertar archivo-->
+                <div id="iframe-archivo" style="display: none; margin-left:40px;"> 
+                    <p>Selecciona el archivo:</p>
+                    <input type="file" class="archivo">  <br>
+                    <p class="infoArchivo" style="color: red;"></p>
+                </div>
+
+                <!--Incrustar código (ej. youtube)-->
+                <div id="iframe-incrustar" style="display: none; margin-left:40px;">
+                    <p>Añade aquí el código que deseas incrustar:</p>
+                    <input type="text" class="codigo-incrustracion">
+                </div>
+
+                <div id="apartado-intentalo-tu-mismo" >
+                    <p>¿Quieres insertar botón de "inténtalo tú mismo"?</p>
+
+                    <input type="checkbox" id="insertar-boton-intentalo-iframe" class="botonIntentalo3" value="añadirBoton">
+                    <label for="insertar-boton-intentalo-iframe">Insertar botón de "inténtalo tú mismo"</label>
+                </div>
+
+            </div>
+
+        </div>
+
+        <br><br>
+
+
+        <!--PARA INTRODUCIR BOTONES DE ATENCIÓN, CONOCE MÁS O PRUEBA ESTO-->
+        
+        <input type="checkbox" class="casilla-boton" onclick="aparecerElemento(this, 'introduceBoton')"><label for="casilla-boton">Introducir un botón (atención, conoce más o prueba esto)</label>
+        
+        <div id="introduceBoton" class="introducirBoton inicialmenteInvisible"> <br> <!--Div inicialmente invisible, que contiene las opciones de botón a introducir-->
+            
+            <!--Atención-->
+            <input type="checkbox" class="mostrarAtencion" onclick="aparecerElemento(this, 'introduceAtencion')">Añadir "Atención" <br>
+                
+                <div class="inicialmenteInvisible" id="introduceAtencion">
+
+                    <label for="añadirAtencion">Introduce el contenido de "Atención":</label> <br>
+                    <div class="posicionamiento"> <!--Para que los botones de estilos aparezcan a la derecha-->
+
+                        <div>
+                            <textarea class="atencion" id="añadirAtencion" cols="60" rows="15"></textarea> 
+                        </div>  
+
+                        <div class="botones_estilos">
+                            <button onclick="ponerNegrita('añadirAtencion')"> <img src="../imagenes/negrita.png" alt="Negrita" title="Negrita" width="10px"> </button> 
+                            <button onclick="ponerCursiva('añadirAtencion')"> <img src="../imagenes/cursiva.png" alt="Cursiva" title="Cursiva" width="10px"> </button>
+                            <button onclick="ponerSubrayado('añadirAtencion')"> <img src="../imagenes/subrayado.png" alt="Subrayado" title="Subrayado" width="10px"> </button>
+                            <button onclick="ponerEnlacesDentro('añadirAtencion')"> <img src="../imagenes/enlace.png" alt="Enlace" title="Enlace" width="10px"> </button> <!--En este caso, los enlaces se abren en la propia página-->
+                            <button onclick="ponerEstiloPre('añadirAtencion')"> <img src="../imagenes//estilo.png" alt="Estilo" title="Estilo" width="10px"> </button>
+                            <br>
+                        </div>
+
+                    </div>
+
+                </div> 
+
+
+            <!--Conoce más-->
+            <input type="checkbox" class="mostrarConoceMas" onclick="aparecerElemento(this, 'introduceConoceMas')">Añadir "Conoce más" <br>
+            
+                <div class="inicialmenteInvisible" id="introduceConoceMas">
+
+                    <label for="añadirConoceMas">Introduce el contenido de "Conoce más":</label> <br>
+                    <div class="posicionamiento"> <!--Para que los botones de estilos aparezcan a la derecha-->
+
+                        <div>
+                            <textarea class="conoceMas" id="añadirConoceMas" cols="60" rows="15"></textarea>
+                        </div>  
+
+                        <div class="botones_estilos">
+                            <button onclick="ponerNegrita('añadirConoceMas')"> <img src="../imagenes/negrita.png" alt="Negrita" title="Negrita" width="10px"> </button> 
+                            <button onclick="ponerCursiva('añadirConoceMas')"> <img src="../imagenes/cursiva.png" alt="Cursiva" title="Cursiva" width="10px"> </button>
+                            <button onclick="ponerSubrayado('añadirConoceMas')"> <img src="../imagenes/subrayado.png" alt="Subrayado" title="Subrayado" width="10px"> </button>
+                            <button onclick="ponerEnlacesDentro('añadirConoceMas')"> <img src="../imagenes/enlace.png" alt="Enlace" title="Enlace" width="10px"> </button> <!--En este caso, los enlaces se abren en la propia página-->
+                            <button onclick="ponerEstiloPre('añadirConoceMas')"> <img src="../imagenes//estilo.png" alt="Estilo" title="Estilo" width="10px"> </button>
+                            <br>
+                        </div>
+
+                    </div>
+        
+                </div>   
+
+            <!--Prueba esto-->
+            <input type="checkbox" class="mostrarPruebaEsto" onclick="aparecerElemento(this, 'introducePruebaEsto')">Añadir "Prueba esto"
+            
+                <div class="inicialmenteInvisible" id="introducePruebaEsto">
+
+                    <label for="añadirPruebaEsto">Introduce el contenido de "Prueba esto"</label> <br>
+                    <div class="posicionamiento"> <!--Para que los botones de estilos aparezcan a la derecha-->
+
+                        <div>
+                            <textarea class="pruebaEsto" id="añadirPruebaEsto" cols="60" rows="15"></textarea>
+                        </div>  
+
+                        <div class="botones_estilos">
+                            <button onclick="ponerNegrita('añadirPruebaEsto')"> <img src="../imagenes/negrita.png" alt="Negrita" title="Negrita" width="10px"> </button> 
+                            <button onclick="ponerCursiva('añadirPruebaEsto')"> <img src="../imagenes/cursiva.png" alt="Cursiva" title="Cursiva" width="10px"> </button>
+                            <button onclick="ponerSubrayado('añadirPruebaEsto')"> <img src="../imagenes/subrayado.png" alt="Subrayado" title="Subrayado" width="10px"> </button>
+                            <button onclick="ponerEnlacesDentro('añadirPruebaEsto')"> <img src="../imagenes/enlace.png" alt="Enlace" title="Enlace" width="10px"> </button> <!--En este caso, los enlaces se abren en la propia página-->
+                            <button onclick="ponerEstiloPre('añadirPruebaEsto')"> <img src="../imagenes//estilo.png" alt="Estilo" title="Estilo" width="10px"> </button>
+                            <br>
+                        </div>
+
+                    </div>
+                    
+                </div>
+        </div>
+
+        <br><br>
+
+        <!--AÑADIR SUBAPARTADOS-->
+        <div style="margin-left: 30px"> <!--Simplemente para dar margen a los nuevos apartados-->
+
+            <div id="nuevos-subapartados0"></div> <!--Div vacio en el que se van incorporando nuevos div de subapartados-->
+
+            <button onclick="nuevoSubapartado(0)">Añadir más contenido</button> <!--Llama a la función para insertar un nuevo subapartado, pasando el índice del apartado-->
+        
+        </div>
+
+        <br><br><hr><br>
+    </div> <!--Fin del div con el id "apartado" y la clase class="contenedorApartados"-->
+
+    <!--AÑADIR APARTADOS-->
+    <div id="nuevos-apartados"></div> <!--Aquí se van añadiendo los apartados-->
+
+        <button onclick="nuevoApartado()">Añadir nuevo apartado</button>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend>Botón final "prueba esto"</legend>
+        <label for="prueba-esto">Introduce el contenido del "prueba esto":</label> <br>
+
+        <div class="posicionamiento">
+            <div>
+            <textarea name="prueba-esto" id="prueba-esto" cols="60" rows="15"></textarea>
+            </div>
+
+            <div class="botones_estilos">
+                <button onclick="ponerNegrita('prueba-esto')"> <img src="../imagenes/negrita.png" alt="Negrita" title="Negrita" width="10px"> </button> 
+                <button onclick="ponerCursiva('prueba-esto')"> <img src="../imagenes/cursiva.png" alt="Cursiva" title="Cursiva" width="10px"> </button>
+                <button onclick="ponerSubrayado('prueba-esto')"> <img src="../imagenes/subrayado.png" alt="Subrayado" title="Subrayado" width="10px"> </button>
+                <button onclick="ponerEnlace('prueba-esto')"> <img src="../imagenes/enlace.png" alt="Enlace" title="Enlace" width="10px"> </button>
+                <button onclick="ponerEstiloPre('prueba-esto')"> <img src="../imagenes//estilo.png" alt="Estilo" title="Estilo" width="10px"> </button>
+                <br>
+            </div>
+        </div>
+    </fieldset>
+    
+    <br>
+
+    <fieldset>
+        <legend>Resumen</legend>
+        <label for="resumen">Introduce aquí el resumen:</label> <br>
+
+        <div class="posicionamiento">
+            <div>
+            <textarea name="resumen" id="resumen" cols="60" rows="15" required></textarea>
+            </div>
+
+            <div class="botones_estilos">
+                <button onclick="ponerNegrita('resumen')"> <img src="../imagenes/negrita.png" alt="Negrita" title="Negrita" width="10px"> </button> 
+                <button onclick="ponerCursiva('resumen')"> <img src="../imagenes/cursiva.png" alt="Cursiva" title="Cursiva" width="10px"> </button>
+                <button onclick="ponerSubrayado('resumen')"> <img src="../imagenes/subrayado.png" alt="Subrayado" title="Subrayado" width="10px"> </button>
+                <button onclick="ponerEnlace('resumen')"> <img src="../imagenes/enlace.png" alt="Enlace" title="Enlace" width="10px"> </button>
+                <button onclick="ponerEstiloPre('resumen')"> <img src="../imagenes//estilo.png" alt="Estilo" title="Estilo" width="10px"> </button>
+                <br>
+            </div>
+        </div>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend>Enlaces de referencia:</legend>
+        <label for="referencia">Introduce aquí los enlaces que hayas usado:</label> <br>
+
+        <div class="posicionamiento">
+            <div>
+            <textarea name="referencia" id="referencia" cols="60" rows="15"></textarea>
+            </div>
+
+            <div class="botones_estilos">
+                <button onclick="ponerNegrita('referencia')"> <img src="../imagenes/negrita.png" alt="Negrita" title="Negrita" width="10px"> </button> 
+                <button onclick="ponerCursiva('referencia')"> <img src="../imagenes/cursiva.png" alt="Cursiva" title="Cursiva" width="10px"> </button>
+                <button onclick="ponerSubrayado('referencia')"> <img src="../imagenes/subrayado.png" alt="Subrayado" title="Subrayado" width="10px"> </button>
+                <button onclick="ponerEnlace('referencia')"> <img src="../imagenes/enlace.png" alt="Enlace" title="Enlace" width="10px"> </button>
+                <button onclick="ponerEstiloPre('referencia')"> <img src="../imagenes//estilo.png" alt="Estilo" title="Estilo" width="10px"> </button>
+                <br>
+            </div>
+        </div>
+    </fieldset>
+
+    <br>
+
+    <fieldset id="paginas-anterior-siguiente" style="display: none;">
+        <legend>Página anterior y siguiente</legend>
+        <p>Selecciona la página anterior:</p>
+        
+        <select id="selectPaginaAnterior"> <!--Select vacío en el que se van introducciendo las opciones al cargar un archivo json intermedio-->
+            <option value="">Selecciona la página anterior</option>
+        </select>
+
+        <p>Selecciona la página siguiente </p>
+        <select id="selectPaginaSiguiente"> <!--Select vacío en el que se van introducciendo las opciones al cargar un archivo json intermedio-->
+            <option value="">Selecciona la página siguiente</option>
+        </select>
+    </fieldset>
+
+    <br>
+
+    <!--PARA LAS PALABRAS CLAVE-->
+    <fieldset>
+        <legend>Palabras clave:</legend>
+        <label for="palabras-clave">Introduce las palabras clave de esta página, separadas por espacio (sin comas):</label> <br><br>
+        <input type="text" id="palabras-clave">
+        <p style="color:rgb(180, 51, 51)">Las palabras clave deberían escribirse en minúscula, sin usar artículos como "de, y, en", con tilde cuando la palabra lo lleve y en singular en caso de ser su plural solo añadiendo -s. Si lleva -es, añade los dos. Ejemplo de palabras clave: "estilo método función funciones dom javascript programación"</p>
+    </fieldset>
+
+    <br>
+
+    <button onclick="funcionPrincipal('preview')" class="estilo">Vista previa</button>
+
+    <button onclick="funcionPrincipal('descarga')" class="estilo">Descargar</button>
+
+    <p style="color:rgb(180, 51, 51)">Una vez que pulses este botón, se descargará el html, el json y el txt. </p>
+
+
+    <br>
+
+    <!--PIE DE PÁGINA-->
+    <div class="pie">
+        <div class="formulario">
+            <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSebNH1TrpXBxKQN-mKTVJnTt3OEVLhVuFMbdRqyUTHTRwOECw/viewform?embedded=true"
+                width="700" height="460" frameborder="0" marginheight="0" marginwidth="0">Cargando…
+            </iframe>
+        </div>
+
+        <div class="sobrenosotros">
+            <a href="../../index.html">
+                <div class="svgContainer">
+                    <svg class='logonosotros3 logonosotros3_index' version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+                        preserveAspectRatio="xMidYMid meet">
+                        <title>Ir a página principal del tutorial</title>
+
+                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000"
+                            stroke="none">
+                            <path class="casita" d="M2464 5106 c-23 -7 -63 -28 -90 -46 -63 -42 -2230 -2204 -2295 -2290
+-61 -80 -83 -149 -76 -237 9 -117 79 -217 186 -267 41 -19 67 -21 248 -24
+l203 -3 2 -1002 3 -1002 27 -51 c40 -76 70 -107 140 -145 l63 -34 522 -3 522
+-3 3 843 3 843 34 63 c38 70 69 100 145 140 l51 27 405 0 405 0 51 -27 c76
+-40 107 -70 145 -140 l34 -63 3 -843 3 -843 522 3 522 3 52 27 c66 35 116 85
+151 151 l27 52 3 1002 2 1002 203 3 c181 3 207 5 248 24 179 83 242 300 136
+469 -17 28 -156 176 -309 330 l-277 280 -3 610 -3 610 -34 63 c-38 70 -69 100
+-145 140 l-51 27 -245 0 -245 0 -63 -34 c-70 -38 -101 -70 -139 -145 -24 -45
+-27 -65 -31 -179 l-4 -129 -362 360 c-198 197 -383 374 -410 392 -86 58 -190
+75 -282 46z" />
+                        </g>
+                    </svg>
+                </div>
+            </a>
+            <a href="../../OTRAS/sobrenosotros.html">
+                <p class="blanco">SOBRE NOSOTROS</p>
+            </a>
+            <div class="divpoliticas">
+                <ul class="politicas">
+                    <li><a href="../../OTRAS/cookies.html">
+                            <p class="cookies">Cookies</p>
+                        </a></li>
+                    <li><a href="../../OTRAS/privacidad.html">
+                            <p class="cookies">· Política de privacidad</p>
+                        </a></li><br>
+                    <li><a href="../../OTRAS/legal.html">
+                            <p class="cookies">Aviso legal</p>
+                        </a></li>
+                </ul>
+            </div>
+            <div class="redes">
+                <a href="https://es-es.facebook.com/imfemalaga/"> <!-- LOGO FACEBOOK -->
+
+                    <!--SVG-->
+                    <div class="svgContainer">
+
+                        <svg class="facebook" version="1.0" xmlns="http://www.w3.org/2000/svg" width="25.000000pt"
+                            height="25.000000pt" viewBox="0 0 50.000000 50.000000"
+                            preserveAspectRatio="xMidYMid meet">
+
+                            <g transform="translate(-5.000000,53.000000) scale(0.115000,-0.115000)" fill="#000000"
+                                stroke="none">
+                                <path d="M57 442 c-15 -16 -17 -45 -17 -194 0 -157 2 -177 18 -191 16 -15 45
+                                -17 194 -17 157 0 177 2 191 18 15 16 17 45 17 194 0 157 -2 177 -18 191 -16
+                                15 -45 17 -194 17 -157 0 -177 -2 -191 -18z m378 -192 l0 -185 -52 -3 -53 -3
+                                0 70 c0 64 2 71 20 71 13 0 20 7 20 19 0 11 3 26 6 35 5 12 0 16 -20 16 -16 0
+                                -26 6 -26 15 0 9 9 15 25 15 21 0 25 5 25 30 0 25 -4 30 -35 36 -47 9 -82 -15
+                                -91 -61 -3 -20 -12 -35 -20 -35 -9 0 -14 -12 -14 -35 0 -24 5 -35 15 -35 12 0
+                                15 -14 15 -70 l0 -71 -92 3 -93 3 -3 175 c-1 96 0 180 3 187 3 11 44 13 187
+                                11 l183 -3 0 -185z m-75 87 c0 -7 -10 -17 -22 -22 -14 -6 -24 -21 -26 -37 -3
+                                -24 0 -28 23 -28 32 0 29 -23 -3 -28 -20 -3 -22 -9 -22 -83 0 -72 -2 -79 -20
+                                -79 -18 0 -20 7 -20 80 0 64 -3 80 -15 80 -8 0 -15 7 -15 15 0 8 7 15 15 15
+                                10 0 15 10 15 31 0 49 16 69 55 69 22 0 35 -5 35 -13z" />
+                            </g>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="https://twitter.com/malagaimfe?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+
+                    <!--SVG-->
+                    <div class="svgContainer">
+                        <svg class="twitter" version="1.0" xmlns="http://www.w3.org/2000/svg" width="25.500000pt"
+                            height="25.000000pt" viewBox="0 0 45.000000 44.000000"
+                            preserveAspectRatio="xMidYMid meet">
+
+                            <g transform="translate(5.000000,40.000000) scale(0.080000,-0.080000)" fill="#000000"
+                                stroke="none">
+                                <path d="M66 358 c32 -46 68 -97 81 -115 13 -17 23 -35 23 -40 0 -4 -37 -51
+                            -82 -103 -65 -77 -77 -96 -62 -99 18 -3 55 31 135 126 l36 43 57 -85 58 -85
+                            64 0 c35 0 64 3 64 6 0 3 -38 61 -84 128 l-84 122 79 92 c73 83 78 92 55 92
+                            -18 0 -41 -19 -88 -74 -44 -52 -66 -71 -75 -65 -6 6 -30 39 -53 75 l-42 64
+                            -69 0 -69 0 56 -82z m183 -134 c67 -97 121 -178 121 -181 0 -2 -10 -3 -21 -1
+                            -15 2 -58 55 -140 173 -65 94 -118 173 -119 178 0 4 9 7 19 7 14 0 54 -49 140
+                            -176z" />
+                            </g>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/user/imfecanaltv"> <!-- LOGO YOUTUBE -->
+
+                    <!--SVG-->
+                    <div class="svgContainer">
+                        <svg class="youtube" version="1.0" xmlns="http://www.w3.org/2000/svg" width="33.000000pt"
+                            height="24.000000pt" viewBox="0 0 66.000000 48.000000"
+                            preserveAspectRatio="xMidYMid meet">
+
+                            <g transform="translate(1.200000,45.000000) scale(0.08000,-0.08000)" fill="#000000"
+                                stroke="none">
+                                <path d="M204 550 c-106 -11 -129 -18 -158 -49 -38 -39 -55 -181 -38 -313 18
+                                -149 38 -164 242 -180 105 -9 171 -9 274 0 142 12 184 25 211 65 25 39 40 202
+                                27 302 -18 141 -41 161 -193 175 -119 11 -262 11 -365 0z m453 -62 c48 -23 58
+                                -58 58 -208 -1 -222 -2 -223 -325 -224 -336 -1 -335 -1 -335 231 0 151 0 153
+                                26 178 20 21 41 28 95 35 102 13 447 4 481 -12z" />
+                                <path d="M303 420 c-36 -15 -45 -45 -41 -140 3 -94 20 -130 60 -130 20 0 148
+                                70 181 98 27 23 22 67 -10 90 -32 22 -158 92 -164 91 -2 0 -14 -4 -26 -9z
+                                m165 -128 c3 -9 -131 -92 -149 -92 -10 0 -13 163 -2 173 7 8 146 -67 151 -81z" />
+                            </g>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="https://imfemalaga.blogspot.com/">
+
+                    <div class="svgContainer">
+                        <svg class="blog" version="1.0" xmlns="http://www.w3.org/2000/svg" width="30.000000pt"
+                            height="25.600000pt" viewBox="0 0 72.000000 62.000000"
+                            preserveAspectRatio="xMidYMid meet">
+                            <g transform="translate(0.000000,55.000000) scale(0.09000,-0.09000)" fill="#000000"
+                                stroke="none">
+                                <path d="M45 608 c-43 -25 -44 -33 -45 -295 0 -138 3 -259 6 -268 16 -41 50
+                                -45 354 -45 296 0 319 3 347 39 9 12 12 86 13 268 0 138 -3 259 -6 268 -16 41
+                                -49 45 -356 45 -202 -1 -299 -4 -313 -12z m629 -34 c24 -23 24 -505 0 -528
+                                -13 -14 -56 -16 -314 -16 -258 0 -301 2 -314 16 -24 23 -24 505 0 528 13 14
+                                56 16 314 16 258 0 301 -2 314 -16z" />
+                                <path d="M191 492 c-55 -29 -71 -71 -71 -180 0 -104 13 -144 58 -177 24 -17
+                                46 -20 172 -23 126 -2 149 0 179 16 48 26 71 73 71 148 0 66 -8 80 -56 93 -21
+                                5 -30 16 -37 42 -19 75 -65 99 -189 99 -71 0 -101 -4 -127 -18z m223 -16 c38
+                                -16 66 -50 66 -82 0 -26 27 -51 60 -56 23 -3 25 -8 28 -58 2 -38 -2 -65 -14
+                                -87 -26 -50 -66 -63 -194 -63 -180 0 -210 25 -210 180 0 104 14 139 64 164 39
+                                20 156 21 200 2z" />
+                                <path d="M254 420 c-29 -11 -35 -33 -18 -59 13 -18 25 -21 79 -21 65 0 95 14
+                                95 45 0 37 -98 59 -156 35z m124 -37 c3 -10 -13 -13 -57 -13 -48 0 -61 3 -61
+                                15 0 13 11 15 57 13 34 -2 58 -8 61 -15z" />
+                                <path d="M242 268 c-19 -19 -14 -56 9 -69 13 -6 59 -10 121 -7 85 2 102 6 114
+                                22 12 17 12 23 0 40 -12 19 -25 21 -122 24 -77 2 -113 -1 -122 -10z m218 -33
+                                c0 -12 -18 -15 -100 -15 -82 0 -100 3 -100 15 0 12 18 15 100 15 82 0 100 -3
+                                100 -15z" />
+                            </g>
+                        </svg>
+                    </div>
+                </a>
+
+            </div>
+            <div class="divcopyright">
+                <p class="copyright">
+                    ©2023 <a href="../../OTRAS/licencias.html">Tutorialimfe.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+</div>   
+</body>
+</html>
+

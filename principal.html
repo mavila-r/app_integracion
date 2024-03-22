@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generación Tutoriales</title>  
+    <script src="../javascript/funcion_principal.js"></script> <!--Para vincular javascript con función principal-->
+    <script src="../javascript/cargar_info_json.js"></script> <!--Para vincular javascript con función para cargar información guardada en un json-->
+    <script src="../javascript/estilos_texto.js"></script> <!--Javascript con funciones para incorporar etiquetas de texto en cada apartado del formulario-->
+    <script src="../javascript/funciones_formulario.js"></script> <!--Javascript para que EN ESTE FORMULARIO, aparezca la opción de insertar imagen o la de insertar ejemplo dinámico, añadir apartados, etc.-->
+    <link rel="stylesheet" href="./CSS/plantilla.css">
+
+    <style>
+        /*Para que aparezcan los campos en función del tipo de ejemplo que se seleccione*/
+        #ejemplo-con-imagen, #ejemplo-dinamico, #ejemplo-con-iframe { /*En principio, estos div tienen display none, pero esto cambia con javascript según la opción de radio que se seleccione gracias a la función aparecerElemento()*/
+            display: none;
+        }
+
+        /*Para ocultar inicialmente la parte de añadir ejemplo / añadir botones*/
+        .introducirEjemplo, .introducirSubejemplo, .inicialmenteInvisible {
+            display: none;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 15pt;
+            border-radius: 10px;
+            background-color: #307797;
+            color: white;
+            margin: 5px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #427f9b;
+        } 
+
+        h1 {
+            color: #0e5779;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="estetica"> 
+        <div id="header">
+            <div>
+                <a href="https://www.malaga.eu/">
+                    <img class="ayuntamiento" src="./img/logo-imf-1.png" alt="ayuntamiento 1" />
+                </a>
+                <a href="https://imfe.malaga.eu/">
+                    <img class="imfe" src="./img/logo-imfe-ok-2019-1.png" alt="imfe 1" />
+                </a>
+            </div>
+
+            <div id="eliPagInt">
+                <a href="#">
+                    <img class="logonosotros3 logo_bajado" src="./img/logo.svg" alt="logo grupo"
+                        title="Ir a página principal del tutorial" />
+                </a>
+            </div>
+
+        </div>
+        <hr>
+        <h1>Generación de Tutoriales</h1>
+
+        <div>
+            <a href="PLANTILLA_IMFE_css/PLANTILLA/Cambio Estilos.html" target="_blank"><button>Crear Estilos</button></a> <br>
+            <a href="PLANTILLA_IMFE_index/PLANTILLA/formulario.html" target="_blank"><button>Crear Página Index</button></a> <br>
+            <a href="PLANTILLA_IMFE_intermedio/PLANTILLA/formulario.html" target="_blank"><button>Crear Página Intermedias</button></a> <br>
+            <a href="PLANTILLA_IMFE_detalle/PLANTILLA/formulario.html" target="_blank"><button>Crear Página de Detalle</button></a><br>
+            <a href="PLANTILLA_IMFE_buscador_menu/PLANTILLA/formulario.html" target="_blank"><button>Crear Menú y Buscador</button></a>
+        </div>
+        <div class="pie">
+            <div class="formulario">
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSebNH1TrpXBxKQN-mKTVJnTt3OEVLhVuFMbdRqyUTHTRwOECw/viewform?embedded=true"
+                    width="700" height="460" frameborder="0" marginheight="0" marginwidth="0">Cargando…
+                </iframe>
+            </div>
+    
+            <div class="sobrenosotros">
+                <a href="../../index.html">
+                    <div class="svgContainer">
+                        <svg class='logonosotros3 logonosotros3_index' version="1.0" xmlns="http://www.w3.org/2000/svg"
+                            width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+                            preserveAspectRatio="xMidYMid meet">
+                            <title>Ir a página principal del tutorial</title>
+    
+                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000"
+                                stroke="none">
+                                <path class="casita" d="M2464 5106 c-23 -7 -63 -28 -90 -46 -63 -42 -2230 -2204 -2295 -2290
+    -61 -80 -83 -149 -76 -237 9 -117 79 -217 186 -267 41 -19 67 -21 248 -24
+    l203 -3 2 -1002 3 -1002 27 -51 c40 -76 70 -107 140 -145 l63 -34 522 -3 522
+    -3 3 843 3 843 34 63 c38 70 69 100 145 140 l51 27 405 0 405 0 51 -27 c76
+    -40 107 -70 145 -140 l34 -63 3 -843 3 -843 522 3 522 3 52 27 c66 35 116 85
+    151 151 l27 52 3 1002 2 1002 203 3 c181 3 207 5 248 24 179 83 242 300 136
+    469 -17 28 -156 176 -309 330 l-277 280 -3 610 -3 610 -34 63 c-38 70 -69 100
+    -145 140 l-51 27 -245 0 -245 0 -63 -34 c-70 -38 -101 -70 -139 -145 -24 -45
+    -27 -65 -31 -179 l-4 -129 -362 360 c-198 197 -383 374 -410 392 -86 58 -190
+    75 -282 46z" />
+                            </g>
+                        </svg>
+                    </div>
+                </a>
+                <a href="../../OTRAS/sobrenosotros.html">
+                    <p class="blanco">SOBRE NOSOTROS</p>
+                </a>
+                <div class="divpoliticas">
+                    <ul class="politicas">
+                        <li><a href="../../OTRAS/cookies.html">
+                                <p class="cookies">Cookies</p>
+                            </a></li>
+                        <li><a href="../../OTRAS/privacidad.html">
+                                <p class="cookies">· Política de privacidad</p>
+                            </a></li><br>
+                        <li><a href="../../OTRAS/legal.html">
+                                <p class="cookies">Aviso legal</p>
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="redes">
+                    <a href="https://es-es.facebook.com/imfemalaga/"> <!-- LOGO FACEBOOK -->
+    
+                        <!--SVG-->
+                        <div class="svgContainer">
+    
+                            <svg class="facebook" version="1.0" xmlns="http://www.w3.org/2000/svg" width="25.000000pt"
+                                height="25.000000pt" viewBox="0 0 50.000000 50.000000" preserveAspectRatio="xMidYMid meet">
+    
+                                <g transform="translate(-5.000000,53.000000) scale(0.115000,-0.115000)" fill="#000000"
+                                    stroke="none">
+                                    <path d="M57 442 c-15 -16 -17 -45 -17 -194 0 -157 2 -177 18 -191 16 -15 45
+                                    -17 194 -17 157 0 177 2 191 18 15 16 17 45 17 194 0 157 -2 177 -18 191 -16
+                                    15 -45 17 -194 17 -157 0 -177 -2 -191 -18z m378 -192 l0 -185 -52 -3 -53 -3
+                                    0 70 c0 64 2 71 20 71 13 0 20 7 20 19 0 11 3 26 6 35 5 12 0 16 -20 16 -16 0
+                                    -26 6 -26 15 0 9 9 15 25 15 21 0 25 5 25 30 0 25 -4 30 -35 36 -47 9 -82 -15
+                                    -91 -61 -3 -20 -12 -35 -20 -35 -9 0 -14 -12 -14 -35 0 -24 5 -35 15 -35 12 0
+                                    15 -14 15 -70 l0 -71 -92 3 -93 3 -3 175 c-1 96 0 180 3 187 3 11 44 13 187
+                                    11 l183 -3 0 -185z m-75 87 c0 -7 -10 -17 -22 -22 -14 -6 -24 -21 -26 -37 -3
+                                    -24 0 -28 23 -28 32 0 29 -23 -3 -28 -20 -3 -22 -9 -22 -83 0 -72 -2 -79 -20
+                                    -79 -18 0 -20 7 -20 80 0 64 -3 80 -15 80 -8 0 -15 7 -15 15 0 8 7 15 15 15
+                                    10 0 15 10 15 31 0 49 16 69 55 69 22 0 35 -5 35 -13z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+    
+                    <a href="https://twitter.com/malagaimfe?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+    
+                        <!--SVG-->
+                        <div class="svgContainer">
+                            <svg class="twitter" version="1.0" xmlns="http://www.w3.org/2000/svg" width="25.500000pt"
+                                height="25.000000pt" viewBox="0 0 45.000000 44.000000" preserveAspectRatio="xMidYMid meet">
+    
+                                <g transform="translate(5.000000,40.000000) scale(0.080000,-0.080000)" fill="#000000"
+                                    stroke="none">
+                                    <path d="M66 358 c32 -46 68 -97 81 -115 13 -17 23 -35 23 -40 0 -4 -37 -51
+                                -82 -103 -65 -77 -77 -96 -62 -99 18 -3 55 31 135 126 l36 43 57 -85 58 -85
+                                64 0 c35 0 64 3 64 6 0 3 -38 61 -84 128 l-84 122 79 92 c73 83 78 92 55 92
+                                -18 0 -41 -19 -88 -74 -44 -52 -66 -71 -75 -65 -6 6 -30 39 -53 75 l-42 64
+                                -69 0 -69 0 56 -82z m183 -134 c67 -97 121 -178 121 -181 0 -2 -10 -3 -21 -1
+                                -15 2 -58 55 -140 173 -65 94 -118 173 -119 178 0 4 9 7 19 7 14 0 54 -49 140
+                                -176z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+    
+                    <a href="https://www.youtube.com/user/imfecanaltv"> <!-- LOGO YOUTUBE -->
+    
+                        <!--SVG-->
+                        <div class="svgContainer">
+                            <svg class="youtube" version="1.0" xmlns="http://www.w3.org/2000/svg" width="33.000000pt"
+                                height="24.000000pt" viewBox="0 0 66.000000 48.000000" preserveAspectRatio="xMidYMid meet">
+    
+                                <g transform="translate(1.200000,45.000000) scale(0.08000,-0.08000)" fill="#000000"
+                                    stroke="none">
+                                    <path d="M204 550 c-106 -11 -129 -18 -158 -49 -38 -39 -55 -181 -38 -313 18
+                                    -149 38 -164 242 -180 105 -9 171 -9 274 0 142 12 184 25 211 65 25 39 40 202
+                                    27 302 -18 141 -41 161 -193 175 -119 11 -262 11 -365 0z m453 -62 c48 -23 58
+                                    -58 58 -208 -1 -222 -2 -223 -325 -224 -336 -1 -335 -1 -335 231 0 151 0 153
+                                    26 178 20 21 41 28 95 35 102 13 447 4 481 -12z" />
+                                    <path d="M303 420 c-36 -15 -45 -45 -41 -140 3 -94 20 -130 60 -130 20 0 148
+                                    70 181 98 27 23 22 67 -10 90 -32 22 -158 92 -164 91 -2 0 -14 -4 -26 -9z
+                                    m165 -128 c3 -9 -131 -92 -149 -92 -10 0 -13 163 -2 173 7 8 146 -67 151 -81z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+    
+                    <a href="https://imfemalaga.blogspot.com/">
+    
+                        <div class="svgContainer">
+                            <svg class="blog" version="1.0" xmlns="http://www.w3.org/2000/svg" width="30.000000pt"
+                                height="25.600000pt" viewBox="0 0 72.000000 62.000000" preserveAspectRatio="xMidYMid meet">
+                                <g transform="translate(0.000000,55.000000) scale(0.09000,-0.09000)" fill="#000000"
+                                    stroke="none">
+                                    <path d="M45 608 c-43 -25 -44 -33 -45 -295 0 -138 3 -259 6 -268 16 -41 50
+                                    -45 354 -45 296 0 319 3 347 39 9 12 12 86 13 268 0 138 -3 259 -6 268 -16 41
+                                    -49 45 -356 45 -202 -1 -299 -4 -313 -12z m629 -34 c24 -23 24 -505 0 -528
+                                    -13 -14 -56 -16 -314 -16 -258 0 -301 2 -314 16 -24 23 -24 505 0 528 13 14
+                                    56 16 314 16 258 0 301 -2 314 -16z" />
+                                    <path d="M191 492 c-55 -29 -71 -71 -71 -180 0 -104 13 -144 58 -177 24 -17
+                                    46 -20 172 -23 126 -2 149 0 179 16 48 26 71 73 71 148 0 66 -8 80 -56 93 -21
+                                    5 -30 16 -37 42 -19 75 -65 99 -189 99 -71 0 -101 -4 -127 -18z m223 -16 c38
+                                    -16 66 -50 66 -82 0 -26 27 -51 60 -56 23 -3 25 -8 28 -58 2 -38 -2 -65 -14
+                                    -87 -26 -50 -66 -63 -194 -63 -180 0 -210 25 -210 180 0 104 14 139 64 164 39
+                                    20 156 21 200 2z" />
+                                    <path d="M254 420 c-29 -11 -35 -33 -18 -59 13 -18 25 -21 79 -21 65 0 95 14
+                                    95 45 0 37 -98 59 -156 35z m124 -37 c3 -10 -13 -13 -57 -13 -48 0 -61 3 -61
+                                    15 0 13 11 15 57 13 34 -2 58 -8 61 -15z" />
+                                    <path d="M242 268 c-19 -19 -14 -56 9 -69 13 -6 59 -10 121 -7 85 2 102 6 114
+                                    22 12 17 12 23 0 40 -12 19 -25 21 -122 24 -77 2 -113 -1 -122 -10z m218 -33
+                                    c0 -12 -18 -15 -100 -15 -82 0 -100 3 -100 15 0 12 18 15 100 15 82 0 100 -3
+                                    100 -15z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+    
+                </div>
+                <div class="divcopyright">
+                    <p class="copyright">
+                        ©2023 <a href="../../OTRAS/licencias.html">Tutorialimfe.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

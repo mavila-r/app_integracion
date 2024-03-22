@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="utf-8">
+    <title>Tutorial HTML | CSS | JAVASCRIPT | FORMULARIOS</title>
+
+    <meta name="description" content="Tutorial HTML, CSS, JavaScript y Formularios">
+    <meta name="title" content="Confección y publicación de páginas web">
+    <meta name="keywords" content="Tutorial de HTML, CSS, JavaScript y Formularios">
+    <meta name="author" content="IMFE">
+
+    <link rel="icon" type="image/png" href="../img/logo.svg">
+    <link rel="icon" type="image/gif" href="../img/logo.svg">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="../img/logo.svg">
+
+    <link rel="stylesheet" href="../CSS/tutorial.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../JS/MenuTuto.js"></script>
+</head>
+
+<body>
+
+    <!--div class=" padre overlap-group"-->
+
+    <div class="padre overlap-group">
+
+        <!-- header -->
+
+        <div id="header">
+            <div>
+                <a href="https://www.malaga.eu/">
+                    <img class="ayuntamiento" src="../img/logo-imf-1.png" alt="ayuntamiento 1" />
+                </a>
+                <a href="https://imfe.malaga.eu/">
+                    <img class="imfe" src="../img/logo-imfe-ok-2019-1.png" alt="imfe 1" />
+                </a>
+            </div>
+            <div>
+                <a class="borde2" href="../OTRAS/intermedio_html.html">
+                    <img class="logonosotros3" src="../img/logohtml.png" alt="logo html" 
+                    title="Click para ir a página Principal de HTML"/>
+                </a>
+                <a class="borde2" href="../OTRAS/intermedio_css.html">
+                    <img class="logonosotros3" src="../img/logocss.png" alt="logo css" 
+                    title="Click para ir a página Principal de CSS"/>
+                </a>
+                <a class="borde2" href="../OTRAS/intermedio_form.html">
+                    <img class="logonosotros3" src="../img/logoform.png" alt="logo form" 
+                    title="Click para ir a página Principal de FORMULARIO"/>
+                </a>
+                <a class="borde2" href="../OTRAS/intermedio_javascript.html">
+                    <img class="logonosotros3" src="../img/logojs.png" alt="logo js" 
+                    title="Click para ir a página Principal de JAVASCRIPT"/>
+                </a>
+
+                <a href="../index.html">
+                    <img class="logonosotros3 logo_bajado" src="../img/logo.svg" alt="logo grupo" 
+                    title="Ir a página principal del tutorial"/>
+                <a href="" class="abrir" onmousedown="Abrir()" onclick="crearMenu()">
+                    <img class="menu" src="../img/menu.svg" alt="icono menu" />
+                    <pre> MENU</pre>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Fin header -->
+
+
+        <!-- --------------------------------------------------------------------------------------------------- -->
+
+
+        <div class="main">
+
+            <!-- TITULO PRINCIPAL -->
+
+            <h1 class="tituloprincipal">Aviso legal</h1>
+
+            <!-- FIN TITULO PRINCIPAL -->
+
+            <br>
+
+            <!-- Div borde -->
+
+            <div class="paginapoliticas">
+
+                <!-- Título -->
+
+                <h2>Bienvenido a tutorialimfe.com.</h2>
+
+                <!-- Fin título -->
+
+                <!-- Descripción -->
+
+                <p>
+                    Bienvenido/a a <b><i>tutorialimfe.com</i></b>, un sitio web dedicado a proporcionar tutoriales sobre HTML, CSS, JavaScript y Formularios.
+                </p>
+                <p>
+                    Antes de utilizar este sitio, te instamos a que leas cuidadosamente los términos y condiciones que se detallan a continuación.
+                </p>
+
+                <!-- Fin descripción -->
+
+                <br>
+
+                <!-- Título -->
+
+                <h2>Propiedad del Sitio</h2>
+
+                <!-- Fin título -->
+
+                <!-- Descripción -->
+
+                <p>
+                    El sitio web <b><i>tutorialimfe.com</i></b> es propiedad del IMFE. 
+                    Todos los contenidos, materiales y recursos presentados en este sitio son propiedad exclusiva de <b><i>tutorialimfe.com</i></b>, a menos que se indique lo contrario.
+                </p>
+                <p>
+                    Se prohíbe la reproducción, distribución o modificación no autorizada de cualquier contenido de este sitio.
+                </p>
+
+                <!-- Fin descripción -->
+
+                <br>
+
+                <!-- Título -->
+
+                <h2>Uso del Contenido</h2>
+
+                <!-- Fin título -->
+
+                <!-- Descripción -->
+
+                <p>
+                    Los materiales educativos proporcionados en <b><i>tutorialimfe.com</i></b> están destinados únicamente para fines educativos.
+                </p>
+                <p>
+                    Puedes utilizar el contenido con fines personales o educativos, pero no está permitido el uso comercial sin la autorización previa por escrito de <b><i>tutorialimfe.com</i></b>.
+                </p>
+
+                <!-- Fin descripción -->
+
+                <br>
+
+                <!-- Título -->
+
+                <h2>Responsabilidad del Usuario</h2>
+
+                <!-- Fin título -->
+
+                <!-- Descripción -->
+
+                <p>
+                    El uso de los tutoriales y recursos disponibles en tutorialimfe.com es responsabilidad exclusiva del usuario.
+                </p>
+                <p>
+                    No nos hacemos responsables de cualquier daño, pérdida o consecuencia derivada del uso de la información proporcionada en este sitio.
+                </p>
+
+                <!-- Fin descripción -->
+
+                <br>
+
+                <!-- Título -->
+
+                <h2>Enlaces a Terceros</h2>
+
+                <!-- Fin título -->
+
+                <!-- Descripción -->
+
+                <p>
+                    <b><i>tutorialimfe.com</i></b> puede contener enlaces a sitios web de terceros.
+                </p>
+                <p>
+                    No tenemos control sobre el contenido o las políticas de privacidad de estos sitios y no asumimos responsabilidad por ellos.
+                </p>
+
+                <!-- Fin descripción -->
+
+                <br>
+
+                <!-- Título -->
+
+                <h2>Privacidad</h2>
+
+                <!-- Fin título -->
+
+                <!-- Descripción -->
+
+                <p>
+                    Respetamos la privacidad de nuestros usuarios.
+                </p>
+                <p>
+                    Consulta nuestra Política de Privacidad para obtener información detallada sobre cómo recopilamos, utilizamos y protegemos tus datos.
+                </p>
+
+                <!-- Fin descripción -->
+
+                <br>
+
+                <!-- Título -->
+
+                <h2>Modificaciones y Actualizaciones</h2>
+
+                <!-- Fin título -->
+
+                <!-- Descripción -->
+
+                <p>
+                    Nos reservamos el derecho de realizar modificaciones o actualizaciones en cualquier momento y sin previo aviso en el contenido, la estructura o los servicios ofrecidos en <b><i>tutorialimfe.com</i></b>.
+                </p>
+
+                <!-- Fin descripción -->
+
+                <br>
+
+                <!-- Título -->
+
+                <h2>Derechos de Autor</h2>
+
+                <!-- Fin título -->
+
+                <!-- Descripción -->
+
+                <p>
+                    Todos los derechos de autor y propiedad intelectual relacionados con <b><i>tutorialimfe.com</i></b> y sus contenidos están protegidos por la ley. 
+                    El uso no autorizado puede infringir estos derechos y dar lugar a acciones legales.
+                </p><br>
+
+                <p>
+                    Al acceder y utilizar <b><i>tutorialimfe.com</i></b>, aceptas cumplir con estos términos y condiciones. 
+                    Si no estás de acuerdo con alguno de estos términos, te recomendamos que no utilices este sitio.
+                </p>
+                <p>
+                    Para cualquier pregunta o comentario sobre este Aviso Legal, contáctanos a <b><i>tutorial@imfe.com</i></b>.
+                </p>
+
+                <!-- Fin descripción -->
+
+
+            </div><br>
+
+            <!-- Fin div borde -->
+
+            <!-- Descripción fuera del cuadro -->
+
+            <p class="fueracuadro">Gracias por visitar <b><i>tutorialimfe.com</i></b>. Estamos emocionados de
+                ser parte
+                de tu viaje hacia la
+                excelencia
+                en el desarrollo web.
+            </p>
+
+            <p class="fueracuadro">
+                <b>¡A programar juntos!</b>
+            </p>
+
+            <p class="fueracuadro">
+                <img class="logopoliticas" src="../img/logo.svg" alt="logo grupo" />
+            </p>
+
+            <p class="fueracuadro">
+                El Equipo de <b><i>tutorialimfe.com</i></b>
+            </p>
+
+            <!-- Fin descripción fuera del cuadro -->
+
+
+            <!-- --------------------------------------------------------------------------------------------------- -->
+
+
+            <br>
+            <hr><br>
+
+            <!-- pie de página -->
+
+            <div class="pie">
+                <div class="formulario">
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSebNH1TrpXBxKQN-mKTVJnTt3OEVLhVuFMbdRqyUTHTRwOECw/viewform?embedded=true"
+                        width="700" height="460" frameborder="0" marginheight="0" marginwidth="0">Cargando…
+                    </iframe>
+                </div>
+
+                <div class="sobrenosotros">
+                    <a href="../index.html">
+                        <img class="logonosotros2" src="../img/logo.svg" alt="logo grupo" 
+                        title="Ir a página principal del tutorial"/>
+                    </a>
+                    <a href="sobrenosotros.html">
+                        <p class="blanco">SOBRE NOSOTROS</p>
+                    </a>
+                    <div class="divpoliticas">
+                        <ul class="politicas">
+                            <li><a href="cookies.html">
+                                    <p class="cookies">Cookies</p>
+                                </a></li>
+                            <li><a href="privacidad.html">
+                                    <p class="cookies">· Política de privacidad</p>
+                                </a></li>
+                            <li><a href="legal.html">
+                                    <p class="cookies">· Aviso legal</p>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="redes">
+                        <a href="https://es-es.facebook.com/imfemalaga/"><img class="facebook"
+                                src="../img/icons8-facebook-50.png"></a>
+                        <a href="https://twitter.com/malagaimfe?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img
+                                class="twitter" src="../img/group-1.png"></a>
+                        <a href="https://www.youtube.com/user/imfecanaltv"><img class="youtube"
+                                src="../img/group-2.png"></a>
+                        <a href="https://imfemalaga.blogspot.com/"><img class="blog" src="../img/group.png"></a>
+                    </div>
+                    <div class="divcopyright">
+                        <p class="copyright">
+                            ©2023 <a href="licencias.html">Tutorialimfe.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Fin pie de página-->
+
+        </div>
+
+        <!--Fin div main-->
+
+
+        <!-- --------------------------------------------------------------------------------------------------- -->
+
+
+        <!-- Flecha ir arriba, siguiente página y anterior página -->
+
+        <a href="#"> <img class="flecha" src="../img/flecha.png" title="Ir a Inicio" /></a>
+        <!-- <a href="#"> <img class="flechader" src="../img/flechader.png" title="Ir a Página Siguiente" /></a> -->
+        <!-- <a href="#"> <img class="flechaizq" src="../img/flechaizq.png" title="Ir a Página Anterior" /></a> -->
+
+        <!-- Fin flecha ir arriba, siguiente página y anterior página -->
+
+        <!-- Menú -->
+
+        <div class="desplegable" id="abrir">
+            <div class="iconos">
+                <div>
+                    <a href="">
+                        <img class="menu2" src="../img/menu2.png" alt="icono menu" onclick="Cerrar()">
+
+                    </a>
+                </div>
+                <div>
+                    <a href="">
+                        <img class="x" src="../img/x.png" alt="icono x" onclick="Cerrar()">
+                    </a>
+                </div>
+            </div>
+            <!--Buscador dentro del menú-->
+            <div class="content-menu">
+                <form action="">
+                    <label for="search">Buscador</label>
+                    <input type="search" name="search" id="campoBusqueda" onkeypress="buscarConEnter(event)">
+                </form>
+
+            </div>
+
+            <!-- Botón de búsqueda con evento onclick -->
+
+            <div class="cuadroExtAyuda">
+                <button class="botonBuscador" onclick="realizarBusqueda()">Buscar</button>
+                <img class="imgInfo" src="../img/Info.png" onclick="muestraInfo()">
+                <div id="cuadroAyuda">
+                    <p>Ayuda</p>
+                    <ul>
+                        Para hacer una búsqueda efectiva, sigue las siguientes indicaciones:<br><br>
+                        <li>Utiliza palabras completas, como 'tabla' o 'posicionamiento' en vez de 'tab' y 'pos'.</li>
+                        <li>Fíjate en no incluir espacios al principio o al final de tu búsqueda.</li>
+                        <li>Para buscar una etiqueta, usa los símbolos '&lt;' y '&gt;' para buscarla.
+                            Por ejemplo, para buscar la etiqueta p, de párrafo, búscala como &lt;p&gt;.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Contenedor para mostrar los resultados -->
+            <div id="resultadosBusqueda"></div>
+
+            <!-- Modal para mostrar los resultados -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="cerrarModal()">&times;</span>
+                    <div id="modalContent"></div>
+                    <div id="mensajeSinResultados"></div>
+                </div>
+            </div>
+            <!--Fin buscador-->
+        </div>
+
+        <!-- Fin menú -->
+
+    </div>
+
+    <!-- FIN div class=" padre overlap-group"-->
+
+</body>
+
+</html>

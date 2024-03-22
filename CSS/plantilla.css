@@ -1,0 +1,334 @@
+
+body {
+    margin: 0;
+}
+/*HEADER*/
+#header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    position: sticky;
+    background-color: #ffffff;
+    top: 0;
+    z-index: 1;
+    max-height: 20%;
+    margin-bottom: 10px;
+}
+
+#header div {
+    display: flex;
+}
+
+.ayuntamiento {
+    max-height: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 214px;
+    width: auto;
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+
+.imfe {
+    max-height: 80px;
+    height: auto;
+    margin-left: 10px;
+    object-fit: cover;
+    width: auto;
+    max-width: 174px;
+    margin-top: 10px;
+
+}
+
+.logonosotros {
+    max-height: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 80px;
+    width: auto;
+}
+
+.logonosotros4 {
+    max-height: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 80px;
+    width: auto;
+}
+
+.logonosotros3 {
+    max-height: 100%;
+    height: 70px;
+    object-fit: cover;
+    max-width: 80px;
+    width: 70px;
+}
+
+/* PIE PAGINA */
+
+.pie {
+    background-color: #d2dce2;
+    width: 100%;
+    margin-top: 20px;
+    border: 2px solid #0e5779;
+    display: flex;
+}
+
+.formulario {
+    display: flex;
+    width: 50%;
+}
+
+.formulario input:focus {
+    outline: 0;
+    border: 1px solid #0e5779;
+}
+
+.formulario textarea:focus {
+    outline: 0;
+    border: 1px solid #0e5779;
+}
+
+.sobrenosotros {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+p.blanco {
+    color: #0e5779;
+    font-size: 23px;
+    line-height: auto;
+    font-weight: bold;
+}
+
+.sobrenosotros a {
+    text-decoration: none;
+}
+
+p.blanco:hover {
+    opacity: 0.8;
+}
+
+.redes{
+    display: flex;
+}
+.facebook:hover {
+    opacity: 0.6;
+}
+
+.twitter:hover {
+    opacity: 0.6;
+}
+
+.youtube:hover {
+    opacity: 0.6;
+}
+
+.blog:hover {
+    opacity: 0.6;
+}
+
+.logonosotros2 {
+    max-height: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 80px;
+    width: auto;
+}
+
+/* Politicas */
+
+.divpoliticas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+    margin-top: -35px;
+    margin-right: 5%;
+}
+
+ul.politicas li {
+    display: inline;
+}
+
+p.cookies {
+    display: inline;
+    color: #0e5779;
+    font-size: 13px;
+}
+
+.cookies a {
+    text-decoration: none;
+}
+
+p.cookies:hover {
+    opacity: 0.8;
+}
+
+/* Fin políticas */
+
+/* Copyright */
+
+.divcopyright {
+    display: flex;
+    font-size: 13px;
+}
+
+.copyright a {
+    text-decoration: none;
+    color: #0e5779;
+}
+
+/* Fin copyright */
+
+/* TODAS LAS PAGINAS DE POLITICAS */
+
+.paginapoliticas {
+    border: 2px solid #0e5779;
+    padding: 10px;
+    width: auto;
+}
+
+.fueracuadro {
+    text-align: center;
+}
+
+.logopoliticas {
+    width: 70px;
+    height: 70px;
+}
+
+.fotogrupo {
+    width: 500px;
+    height: 300px;
+    border: 2px solid #0e5779;
+}
+
+/* FIN TODAS LAS PAGINAS DE POLITICAS */
+
+/* FIN PIE PAGINA */
+/*ESTILOS SVG*/
+.svgContainer svg g {
+    fill: #0e5779;
+}
+
+.svgContainer2 svg g {
+    fill: #ffffff;
+}
+/*FORMULARIO*/
+h2 {
+    color: #0e5779;
+    text-align: center;
+}
+    fieldset {
+        border-radius: 10px;
+    }
+
+    #estetica {
+        background-color: white;
+        width: 57%;
+        margin: auto;
+        padding: 10px 50px;
+        overflow: hidden;
+        border-radius: 15px;
+        margin-top: 10px;
+    }
+
+    body {
+        background-color: #307797;
+    }
+
+    .contenedorBloquesPadre {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px 15px;
+    }
+
+    .contenedorBloques {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 46%;
+    }
+
+    .contenedorContenidos {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .flexear1 {
+        width: 40%;
+    }
+
+    .flexear2 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 60%;
+    }
+
+    .espacio {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+
+    }
+
+    .posicionamiento {
+        display: flex;
+        align-items: center;
+    }
+
+    .bloquesColor {
+        width: 50px;
+        height: 50px;
+    }
+
+    select {
+        width: 84%;
+    }
+
+    /*PLANTILLA CSS*/
+
+    .icono {
+        width: 60px;
+        height: 60px;
+    }
+
+    .color {
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+
+    }
+
+    .ConSerifa {
+        font-family: Cambria, serif;
+        font-size: 18pt;
+    }
+
+    .SinSerifa {
+        font-family: Candara, sans-serif;
+        font-size: 18pt;
+    }
+
+    body {
+        background-color: #307797;
+    }
+
+    .botones {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    h2 {
+        color: #0e5779;
+        text-align: center;
+    }

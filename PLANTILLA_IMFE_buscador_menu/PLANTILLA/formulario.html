@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador y Menú</title>
+    <script src="../Javascript/cambio_MenuTuto.js"></script>
+    <script src="../Javascript/cargar_MenuTuto_json.js"></script>
+    <script src="../Javascript/funciones_formulario.js"></script>
+    <link rel="stylesheet" href="../../CSS/plantilla.css">
+
+</head>
+
+<body>
+    <div id="estetica">
+        <div id="header">
+            <div>
+                <a href="https://www.malaga.eu/">
+                    <img class="ayuntamiento" src="../../img/logo-imf-1.png" alt="ayuntamiento 1" />
+                </a>
+                <a href="https://imfe.malaga.eu/">
+                    <img class="imfe" src="../../img/logo-imfe-ok-2019-1.png" alt="imfe 1" />
+                </a>
+            </div>
+
+            <div id="eliPagInt">
+                <a href="../../principal.html">
+                    <img class="logonosotros3 logo_bajado" src="../../img/logo.svg" alt="logo grupo"
+                        title="Ir a página principal del tutorial" />
+                </a>
+            </div>
+
+        </div>
+        <hr>
+        <h2>CREAR MENÚ Y BUSCADOR</h2>
+        <fieldset>
+            <legend style="color:red;">
+                * Modifica el menú que ya tienes. Selecciona tu archivo
+                <em>index.json</em> más actualizado.
+
+            </legend>
+            <!-- Input para cargar archivo JSON -->
+            <input type="file" id="archivoJSON" accept=".json" onchange="cargarMenu()">
+            <!--Aquí es dónde se carga el archivo, que tiene que ser .json-->
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>
+                <label for="nuevoMenu">
+                    Copia aquí la información del <b>menú</b> que se descargó en el .txt al crear la página de
+                    detalle:
+                </label>
+            </legend>
+            <div>
+
+                <p style="color:rgb(180, 51, 51)">Ejemplo: <br> { texto: 'Introducción', url: cabeceraUrl +
+                    'html/html_introduccion.html'
+                    },</p>
+                </legend>
+                <input type="text" id="nuevoMenu" class="contenedorMenu">
+
+                <!--AÑADIR APARTADOS-->
+                <div id="nuevo-apartado-menu"></div> <!--Aquí se van añadiendo los apartados-->
+                <br>
+            </div>
+            <button id="botonMenu" onclick="nuevoApartadoMenu()">Añadir nueva línea de menú</button>
+
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>
+                <label for="nuevoBuscador">
+                    Copia aquí la información del <b>buscador</b> que se descargó en el .txt al crear la página de
+                    detalle:
+                </label>
+            </legend>
+            <div>
+
+                <p style="color:rgb(180, 51, 51)">Ejemplo: <br> 'html_inline': { url: 'html/html_inline', nombre:
+                    'Inline',
+                    contenido:
+                    'inline linea elemento span input code em u i strong a img sub sup' },
+                </p>
+                <input type="text" id="nuevoBuscador" class="contenedorBuscador">
+
+                <div id="nuevo-apartado-buscador"></div> <!--Aquí se van añadiendo los apartados-->
+                <br>
+            </div>
+            <button id="botonBuscador" onclick="nuevoApartadoBuscador()">Añadir nueva línea de buscador</button><br><br>
+
+        </fieldset>
+        <fieldset style="border: 0">
+            <button onclick="actualizarMenuTuto()">Descargar</button>
+        </fieldset>
+        <div class="pie">
+            <div class="formulario">
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSebNH1TrpXBxKQN-mKTVJnTt3OEVLhVuFMbdRqyUTHTRwOECw/viewform?embedded=true"
+                    width="700" height="460" frameborder="0" marginheight="0" marginwidth="0">Cargando…
+                </iframe>
+            </div>
+    
+            <div class="sobrenosotros">
+                <a href="../../index.html">
+                    <div class="svgContainer">
+                        <svg class='logonosotros3 logonosotros3_index' version="1.0" xmlns="http://www.w3.org/2000/svg"
+                            width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+                            preserveAspectRatio="xMidYMid meet">
+                            <title>Ir a página principal del tutorial</title>
+    
+                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000"
+                                stroke="none">
+                                <path class="casita" d="M2464 5106 c-23 -7 -63 -28 -90 -46 -63 -42 -2230 -2204 -2295 -2290
+    -61 -80 -83 -149 -76 -237 9 -117 79 -217 186 -267 41 -19 67 -21 248 -24
+    l203 -3 2 -1002 3 -1002 27 -51 c40 -76 70 -107 140 -145 l63 -34 522 -3 522
+    -3 3 843 3 843 34 63 c38 70 69 100 145 140 l51 27 405 0 405 0 51 -27 c76
+    -40 107 -70 145 -140 l34 -63 3 -843 3 -843 522 3 522 3 52 27 c66 35 116 85
+    151 151 l27 52 3 1002 2 1002 203 3 c181 3 207 5 248 24 179 83 242 300 136
+    469 -17 28 -156 176 -309 330 l-277 280 -3 610 -3 610 -34 63 c-38 70 -69 100
+    -145 140 l-51 27 -245 0 -245 0 -63 -34 c-70 -38 -101 -70 -139 -145 -24 -45
+    -27 -65 -31 -179 l-4 -129 -362 360 c-198 197 -383 374 -410 392 -86 58 -190
+    75 -282 46z" />
+                            </g>
+                        </svg>
+                    </div>
+                </a>
+                <a href="../../OTRAS/sobrenosotros.html">
+                    <p class="blanco">SOBRE NOSOTROS</p>
+                </a>
+                <div class="divpoliticas">
+                    <ul class="politicas">
+                        <li><a href="../../OTRAS/cookies.html">
+                                <p class="cookies">Cookies</p>
+                            </a></li>
+                        <li><a href="../../OTRAS/privacidad.html">
+                                <p class="cookies">· Política de privacidad</p>
+                            </a></li><br>
+                        <li><a href="../../OTRAS/legal.html">
+                                <p class="cookies">Aviso legal</p>
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="redes">
+                    <a href="https://es-es.facebook.com/imfemalaga/"> <!-- LOGO FACEBOOK -->
+    
+                        <!--SVG-->
+                        <div class="svgContainer">
+    
+                            <svg class="facebook" version="1.0" xmlns="http://www.w3.org/2000/svg" width="25.000000pt"
+                                height="25.000000pt" viewBox="0 0 50.000000 50.000000" preserveAspectRatio="xMidYMid meet">
+    
+                                <g transform="translate(-5.000000,53.000000) scale(0.115000,-0.115000)" fill="#000000"
+                                    stroke="none">
+                                    <path d="M57 442 c-15 -16 -17 -45 -17 -194 0 -157 2 -177 18 -191 16 -15 45
+                                    -17 194 -17 157 0 177 2 191 18 15 16 17 45 17 194 0 157 -2 177 -18 191 -16
+                                    15 -45 17 -194 17 -157 0 -177 -2 -191 -18z m378 -192 l0 -185 -52 -3 -53 -3
+                                    0 70 c0 64 2 71 20 71 13 0 20 7 20 19 0 11 3 26 6 35 5 12 0 16 -20 16 -16 0
+                                    -26 6 -26 15 0 9 9 15 25 15 21 0 25 5 25 30 0 25 -4 30 -35 36 -47 9 -82 -15
+                                    -91 -61 -3 -20 -12 -35 -20 -35 -9 0 -14 -12 -14 -35 0 -24 5 -35 15 -35 12 0
+                                    15 -14 15 -70 l0 -71 -92 3 -93 3 -3 175 c-1 96 0 180 3 187 3 11 44 13 187
+                                    11 l183 -3 0 -185z m-75 87 c0 -7 -10 -17 -22 -22 -14 -6 -24 -21 -26 -37 -3
+                                    -24 0 -28 23 -28 32 0 29 -23 -3 -28 -20 -3 -22 -9 -22 -83 0 -72 -2 -79 -20
+                                    -79 -18 0 -20 7 -20 80 0 64 -3 80 -15 80 -8 0 -15 7 -15 15 0 8 7 15 15 15
+                                    10 0 15 10 15 31 0 49 16 69 55 69 22 0 35 -5 35 -13z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+    
+                    <a href="https://twitter.com/malagaimfe?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+    
+                        <!--SVG-->
+                        <div class="svgContainer">
+                            <svg class="twitter" version="1.0" xmlns="http://www.w3.org/2000/svg" width="25.500000pt"
+                                height="25.000000pt" viewBox="0 0 45.000000 44.000000" preserveAspectRatio="xMidYMid meet">
+    
+                                <g transform="translate(5.000000,40.000000) scale(0.080000,-0.080000)" fill="#000000"
+                                    stroke="none">
+                                    <path d="M66 358 c32 -46 68 -97 81 -115 13 -17 23 -35 23 -40 0 -4 -37 -51
+                                -82 -103 -65 -77 -77 -96 -62 -99 18 -3 55 31 135 126 l36 43 57 -85 58 -85
+                                64 0 c35 0 64 3 64 6 0 3 -38 61 -84 128 l-84 122 79 92 c73 83 78 92 55 92
+                                -18 0 -41 -19 -88 -74 -44 -52 -66 -71 -75 -65 -6 6 -30 39 -53 75 l-42 64
+                                -69 0 -69 0 56 -82z m183 -134 c67 -97 121 -178 121 -181 0 -2 -10 -3 -21 -1
+                                -15 2 -58 55 -140 173 -65 94 -118 173 -119 178 0 4 9 7 19 7 14 0 54 -49 140
+                                -176z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+    
+                    <a href="https://www.youtube.com/user/imfecanaltv"> <!-- LOGO YOUTUBE -->
+    
+                        <!--SVG-->
+                        <div class="svgContainer">
+                            <svg class="youtube" version="1.0" xmlns="http://www.w3.org/2000/svg" width="33.000000pt"
+                                height="24.000000pt" viewBox="0 0 66.000000 48.000000" preserveAspectRatio="xMidYMid meet">
+    
+                                <g transform="translate(1.200000,45.000000) scale(0.08000,-0.08000)" fill="#000000"
+                                    stroke="none">
+                                    <path d="M204 550 c-106 -11 -129 -18 -158 -49 -38 -39 -55 -181 -38 -313 18
+                                    -149 38 -164 242 -180 105 -9 171 -9 274 0 142 12 184 25 211 65 25 39 40 202
+                                    27 302 -18 141 -41 161 -193 175 -119 11 -262 11 -365 0z m453 -62 c48 -23 58
+                                    -58 58 -208 -1 -222 -2 -223 -325 -224 -336 -1 -335 -1 -335 231 0 151 0 153
+                                    26 178 20 21 41 28 95 35 102 13 447 4 481 -12z" />
+                                    <path d="M303 420 c-36 -15 -45 -45 -41 -140 3 -94 20 -130 60 -130 20 0 148
+                                    70 181 98 27 23 22 67 -10 90 -32 22 -158 92 -164 91 -2 0 -14 -4 -26 -9z
+                                    m165 -128 c3 -9 -131 -92 -149 -92 -10 0 -13 163 -2 173 7 8 146 -67 151 -81z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+    
+                    <a href="https://imfemalaga.blogspot.com/">
+    
+                        <div class="svgContainer">
+                            <svg class="blog" version="1.0" xmlns="http://www.w3.org/2000/svg" width="30.000000pt"
+                                height="25.600000pt" viewBox="0 0 72.000000 62.000000" preserveAspectRatio="xMidYMid meet">
+                                <g transform="translate(0.000000,55.000000) scale(0.09000,-0.09000)" fill="#000000"
+                                    stroke="none">
+                                    <path d="M45 608 c-43 -25 -44 -33 -45 -295 0 -138 3 -259 6 -268 16 -41 50
+                                    -45 354 -45 296 0 319 3 347 39 9 12 12 86 13 268 0 138 -3 259 -6 268 -16 41
+                                    -49 45 -356 45 -202 -1 -299 -4 -313 -12z m629 -34 c24 -23 24 -505 0 -528
+                                    -13 -14 -56 -16 -314 -16 -258 0 -301 2 -314 16 -24 23 -24 505 0 528 13 14
+                                    56 16 314 16 258 0 301 -2 314 -16z" />
+                                    <path d="M191 492 c-55 -29 -71 -71 -71 -180 0 -104 13 -144 58 -177 24 -17
+                                    46 -20 172 -23 126 -2 149 0 179 16 48 26 71 73 71 148 0 66 -8 80 -56 93 -21
+                                    5 -30 16 -37 42 -19 75 -65 99 -189 99 -71 0 -101 -4 -127 -18z m223 -16 c38
+                                    -16 66 -50 66 -82 0 -26 27 -51 60 -56 23 -3 25 -8 28 -58 2 -38 -2 -65 -14
+                                    -87 -26 -50 -66 -63 -194 -63 -180 0 -210 25 -210 180 0 104 14 139 64 164 39
+                                    20 156 21 200 2z" />
+                                    <path d="M254 420 c-29 -11 -35 -33 -18 -59 13 -18 25 -21 79 -21 65 0 95 14
+                                    95 45 0 37 -98 59 -156 35z m124 -37 c3 -10 -13 -13 -57 -13 -48 0 -61 3 -61
+                                    15 0 13 11 15 57 13 34 -2 58 -8 61 -15z" />
+                                    <path d="M242 268 c-19 -19 -14 -56 9 -69 13 -6 59 -10 121 -7 85 2 102 6 114
+                                    22 12 17 12 23 0 40 -12 19 -25 21 -122 24 -77 2 -113 -1 -122 -10z m218 -33
+                                    c0 -12 -18 -15 -100 -15 -82 0 -100 3 -100 15 0 12 18 15 100 15 82 0 100 -3
+                                    100 -15z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+    
+                </div>
+                <div class="divcopyright">
+                    <p class="copyright">
+                        ©2023 <a href="../../OTRAS/licencias.html">Tutorialimfe.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  --> <!-- TODO ESTO ES LO QUE NO SE VE  -->
+    <!-- TODO ESTO ES LO QUE NO SE VE  -->
+
+
+    <div style="display: none;">
+
+        <!--Titulo principal-->
+        <fieldset>
+            <legend>Título principal:</legend>
+            <label for="titulo">Introducir título de la página:</label><br>
+            <input type="text" id="titulo" required>
+        </fieldset>
+
+        <br>
+
+        <!--Logo grupo-->
+        <fieldset>
+            <legend>Logo grupo:</legend>
+            <label>Selecciona el logo que quiere introducir como el representativo del grupo:</label> <br><br>
+            <input type="file" class="imagenGrupo" id="imagenGrupo" onchange="cargarImagen(0)">
+            <p class="informacion-imagen" style="color:Red"></p>
+            <p style="color:rgb(180, 51, 51)">Nota: si no se ha seleccionado una imagen en este apartado, se pondrá una
+                por defecto.</p>
+        </fieldset>
+
+        <br>
+
+        <!--NUEVO BLOQUE - PARTE PRINCIPAL-->
+        <div>
+            <legend>Ten en cuenta: <p style="color:rgb(180, 51, 51);">No se puede
+                    repetir el mismo color en dos temas. Recuerda no dejar marcado ningún color si no vas a crear un
+                    tema.<br>No se pueden
+                    repetir las mismas iniciales en dos temas.<br>No se puede
+                    repetir el número de tema en dos temas.</p>
+            </legend><br>
+
+            <div id="bloque" class="contenedorBloquesPadre">
+                <!--ESTO ES PARA LO DE AÑADIR NUEVOS INPUT DE TÍTULOS, CONTENIDOS Y ELECCIÓN DE COLOR-->
+                <div class="contenedorBloques">
+                    <fieldset class="contenedorContenidos"> <!--INICIO CONTENEDOR BLOQUE 1-->
+                        <div class="flexear1">
+                            <p style="text-align: center;font-weight: bold; color: #0e5779;text-decoration: underline;">
+                                BLOQUE 1</p>
+                            <label for="inicialesBloques">Nueva inicial 1:</label> <br>
+                            <input type="text" id="inicialesBloques" class="inicialesBloque" maxlength="2">
+
+                            <br><br>
+
+                            <label for="tituloBloques">Nuevo título 1:</label> <br>
+                            <input type="text" id="tituloBloques" class="titulosBloque">
+
+                            <br><br>
+                            <label>Elige el orden del tema:</label>
+                            <br>
+                            <select class="ordenTemas">
+                                <option value="">Selecciona un tema</option>
+                                <option value="Tema1">TEMA 1</option>
+                                <option value="Tema2">TEMA 2</option>
+                                <option value="Tema3">TEMA 3</option>
+                                <option value="Tema4">TEMA 4</option>
+                                <option value="Tema5">TEMA 5</option>
+                                <option value="Tema6">TEMA 6</option>
+                                <option value="Tema7">TEMA 7</option>
+                                <option value="Tema8">TEMA 8</option>
+                                <option value="Tema9">TEMA 9</option>
+                            </select>
+
+                        </div>
+                        <div class="flexear2">
+                            <label>Elige el color del bloque 1:</label>
+                            <p></p>
+                            <div class="espacio">
+                                <!--Para que los input radios y divs de color aparezcan a la derecha-->
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color1" id="rojo"
+                                        value="Rojo">
+                                    <label for="rojo">
+                                        <div class="bloquesColor" style="background-color: #FE0000;" aria-label="Rojo"
+                                            title="Rojo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color1" id="naranja"
+                                        value="Naranja">
+                                    <label for="naranja">
+                                        <div class="bloquesColor" style="background-color: #FF9901;"
+                                            aria-label="Naranja" title="Naranja"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color1" id="amarillo"
+                                        value="Amarillo">
+                                    <label for="amarillo">
+                                        <div class="bloquesColor" style="background-color: #F9D101;"
+                                            aria-label="Amarillo" title="Amarillo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color1" id="verde"
+                                        value="Verde">
+                                    <label for="verde">
+                                        <div class="bloquesColor" style="background-color: #60E53F;" aria-label="Verde"
+                                            title="Verde"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color1" id="turquesa"
+                                        value="Turquesa">
+                                    <label for="turquesa">
+                                        <div class="bloquesColor" style="background-color: #00D2A0;"
+                                            aria-label="turquesa" title="Turquesa"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color1" id="celeste"
+                                        value="Celeste">
+                                    <label for="celeste">
+                                        <div class="bloquesColor" style="background-color: #00C5E0;"
+                                            aria-label="Celeste" title="Celeste"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color1" id="azul"
+                                        value="Azul">
+                                    <label for="azul">
+                                        <div class="bloquesColor" style="background-color: #005AE0;" aria-label="Azul"
+                                            title="Azul"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color1" id="morado"
+                                        value="Morado">
+                                    <label for="morado">
+                                        <div class="bloquesColor" style="background-color: #AF1AF4;" aria-label="Morado"
+                                            title="Morado"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color1" id="rosa"
+                                        value="Rosa">
+                                    <label for="rosa">
+                                        <div class="bloquesColor" style="background-color: #F01AF4;" aria-label="rosa"
+                                            title="Rosa"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset><!--FIN CONTENEDOR BLOQUE 1-->
+                </div>
+
+                <div class="contenedorBloques">
+
+                    <fieldset class="contenedorContenidos"> <!--INICIO CONTENEDOR BLOQUE 2-->
+                        <div class="flexear1">
+                            <p style="text-align: center;font-weight: bold; color: #0e5779;text-decoration: underline;">
+                                BLOQUE 2</p>
+                            <label for="inicialesBloques">Nueva inicial 2:</label> <br>
+                            <input type="text" id="inicialesBloques" class="inicialesBloque" maxlength="2">
+
+                            <br><br>
+
+                            <label for="tituloBloques">Nuevo título 2:</label> <br>
+                            <input type="text" id="tituloBloques" class="titulosBloque">
+
+                            <br><br>
+                            <label>Elige el orden del tema:</label>
+                            <br>
+                            <select class="ordenTemas">
+                                <option value="">Selecciona un tema</option>
+                                <option value="Tema1">TEMA 1</option>
+                                <option value="Tema2">TEMA 2</option>
+                                <option value="Tema3">TEMA 3</option>
+                                <option value="Tema4">TEMA 4</option>
+                                <option value="Tema5">TEMA 5</option>
+                                <option value="Tema6">TEMA 6</option>
+                                <option value="Tema7">TEMA 7</option>
+                                <option value="Tema8">TEMA 8</option>
+                                <option value="Tema9">TEMA 9</option>
+                            </select>
+                            <br><br>
+                        </div>
+                        <div class="flexear2">
+                            <label>Elige el color del bloque 2:</label>
+                            <div class="espacio">
+                                <!--Para que los input radios y divs de color aparezcan a la derecha-->
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color2" id="rojo2"
+                                        value="Rojo">
+                                    <label for="rojo2">
+                                        <div class="bloquesColor" style="background-color: #FE0000;" aria-label="Rojo"
+                                            title="Rojo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color2" id="naranja2"
+                                        value="Naranja">
+                                    <label for="naranja2">
+                                        <div class="bloquesColor" style="background-color: #FF9901;"
+                                            aria-label="Naranja" title="Naranja"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color2" id="amarillo2"
+                                        value="Amarillo">
+                                    <label for="amarillo2">
+                                        <div class="bloquesColor" style="background-color: #F9D101;"
+                                            aria-label="Amarillo" title="Amarillo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color2" id="verde2"
+                                        value="Verde">
+                                    <label for="verde2">
+                                        <div class="bloquesColor" style="background-color: #60E53F;" aria-label="Verde"
+                                            title="Verde"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color2" id="turquesa2"
+                                        value="Turquesa">
+                                    <label for="turquesa2">
+                                        <div class="bloquesColor" style="background-color: #00D2A0;"
+                                            aria-label="turquesa" title="Turquesa"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color2" id="celeste22"
+                                        value="Celeste">
+                                    <label for="celeste22">
+                                        <div class="bloquesColor" style="background-color: #00C5E0;"
+                                            aria-label="Celeste" title="Celeste"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color2" id="azul2"
+                                        value="Azul">
+                                    <label for="azul2">
+                                        <div class="bloquesColor" style="background-color: #005AE0;" aria-label="Azul"
+                                            title="Azul"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color2" id="morado2"
+                                        value="Morado">
+                                    <label for="morado2">
+                                        <div class="bloquesColor" style="background-color: #AF1AF4;" aria-label="Morado"
+                                            title="Morado"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color2" id="rosa2"
+                                        value="Rosa">
+                                    <label for="rosa2">
+                                        <div class="bloquesColor" style="background-color: #F01AF4;" aria-label="rosa"
+                                            title="Rosa"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset><!--FIN CONTENEDOR BLOQUE 2-->
+                </div>
+
+                <div class="contenedorBloques">
+                    <fieldset class="contenedorContenidos"> <!--INICIO CONTENEDOR BLOQUE 3-->
+                        <div class="flexear1">
+                            <p style="text-align: center;font-weight: bold; color: #0e5779;text-decoration: underline;">
+                                BLOQUE 3</p>
+
+                            <label for="inicialesBloques">Nueva inicial 3:</label> <br>
+                            <input type="text" id="inicialesBloques" class="inicialesBloque" maxlength="2">
+
+                            <br><br>
+
+                            <label for="tituloBloques">Nuevo título 3:</label> <br>
+                            <input type="text" id="tituloBloques" class="titulosBloque">
+
+                            <br><br>
+                            <label>Elige el orden del tema:</label>
+                            <br>
+                            <select class="ordenTemas">
+                                <option value="">Selecciona un tema</option>
+                                <option value="Tema1">TEMA 1</option>
+                                <option value="Tema2">TEMA 2</option>
+                                <option value="Tema3">TEMA 3</option>
+                                <option value="Tema4">TEMA 4</option>
+                                <option value="Tema5">TEMA 5</option>
+                                <option value="Tema6">TEMA 6</option>
+                                <option value="Tema7">TEMA 7</option>
+                                <option value="Tema8">TEMA 8</option>
+                                <option value="Tema9">TEMA 9</option>
+                            </select>
+                            <br><br>
+                        </div>
+                        <div class="flexear2">
+                            <label>Elige el color del bloque 3:</label>
+                            <p></p>
+                            <div class="espacio">
+                                <!--Para que los input radios y divs de color aparezcan a la derecha-->
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color3" id="rojo3"
+                                        value="Rojo">
+                                    <label for="rojo3">
+                                        <div class="bloquesColor" style="background-color: #FE0000;" aria-label="Rojo"
+                                            title="Rojo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color3" id="naranja3"
+                                        value="Naranja">
+                                    <label for="naranja3">
+                                        <div class="bloquesColor" style="background-color: #FF9901;"
+                                            aria-label="Naranja" title="Naranja"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color3" id="amarillo3"
+                                        value="Amarillo">
+                                    <label for="amarillo3">
+                                        <div class="bloquesColor" style="background-color: #F9D101;"
+                                            aria-label="Amarillo" title="Amarillo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color3" id="verde3"
+                                        value="Verde">
+                                    <label for="verde3">
+                                        <div class="bloquesColor" style="background-color: #60E53F;" aria-label="Verde"
+                                            title="Verde"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color3" id="turquesa3"
+                                        value="Turquesa">
+                                    <label for="turquesa3">
+                                        <div class="bloquesColor" style="background-color: #00D2A0;"
+                                            aria-label="turquesa" title="Turquesa"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color3" id="celeste3"
+                                        value="Celeste">
+                                    <label for="celeste3">
+                                        <div class="bloquesColor" style="background-color: #00C5E0;"
+                                            aria-label="Celeste" title="Celeste"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color3" id="azul3"
+                                        value="Azul">
+                                    <label for="azul3">
+                                        <div class="bloquesColor" style="background-color: #005AE0;" aria-label="Azul"
+                                            title="Azul"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color3" id="morado3"
+                                        value="Morado">
+                                    <label for="morado3">
+                                        <div class="bloquesColor" style="background-color: #AF1AF4;" aria-label="Morado"
+                                            title="Morado"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color3" id="rosa3"
+                                        value="Rosa">
+                                    <label for="rosa3">
+                                        <div class="bloquesColor" style="background-color: #F01AF4;" aria-label="rosa"
+                                            title="Rosa"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset><!--FIN CONTENEDOR BLOQUE 3-->
+                </div>
+                <div class="contenedorBloques">
+                    <fieldset class="contenedorContenidos"> <!--INICIO CONTENEDOR BLOQUE 4-->
+                        <div class="flexear1">
+                            <p style="text-align: center;font-weight: bold; color: #0e5779;text-decoration: underline;">
+                                BLOQUE 4</p>
+
+                            <label for="inicialesBloques">Nueva inicial 4:</label> <br>
+                            <input type="text" id="inicialesBloques" class="inicialesBloque" maxlength="2">
+
+                            <br><br>
+
+                            <label for="tituloBloques">Nuevo título 4:</label> <br>
+                            <input type="text" id="tituloBloques" class="titulosBloque">
+
+                            <br><br>
+                            <label>Elige el orden del tema:</label>
+                            <br>
+                            <select class="ordenTemas">
+                                <option value="">Selecciona un tema</option>
+                                <option value="Tema1">TEMA 1</option>
+                                <option value="Tema2">TEMA 2</option>
+                                <option value="Tema3">TEMA 3</option>
+                                <option value="Tema4">TEMA 4</option>
+                                <option value="Tema5">TEMA 5</option>
+                                <option value="Tema6">TEMA 6</option>
+                                <option value="Tema7">TEMA 7</option>
+                                <option value="Tema8">TEMA 8</option>
+                                <option value="Tema9">TEMA 9</option>
+                            </select>
+                            <br><br>
+                        </div>
+                        <div class="flexear2">
+                            <label>Elige el color del bloque 4:</label>
+                            <p></p>
+                            <div class="espacio">
+                                <!--Para que los input radios y divs de color aparezcan a la derecha-->
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color4" id="rojo4"
+                                        value="Rojo">
+                                    <label for="rojo4">
+                                        <div class="bloquesColor" style="background-color: #FE0000;" aria-label="Rojo"
+                                            title="Rojo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color4" id="naranja4"
+                                        value="Naranja">
+                                    <label for="naranja4">
+                                        <div class="bloquesColor" style="background-color: #FF9901;"
+                                            aria-label="Naranja" title="Naranja"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color4" id="amarillo4"
+                                        value="Amarillo">
+                                    <label for="amarillo4">
+                                        <div class="bloquesColor" style="background-color: #F9D101;"
+                                            aria-label="Amarillo" title="Amarillo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color4" id="verde4"
+                                        value="Verde">
+                                    <label for="verde4">
+                                        <div class="bloquesColor" style="background-color: #60E53F;" aria-label="Verde"
+                                            title="Verde"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color4" id="turquesa4"
+                                        value="Turquesa">
+                                    <label for="turquesa4">
+                                        <div class="bloquesColor" style="background-color: #00D2A0;"
+                                            aria-label="turquesa" title="Turquesa"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color4" id="celeste4"
+                                        value="Celeste">
+                                    <label for="celeste4">
+                                        <div class="bloquesColor" style="background-color: #00C5E0;"
+                                            aria-label="Celeste" title="Celeste"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color4" id="azul4"
+                                        value="Azul">
+                                    <label for="azul4">
+                                        <div class="bloquesColor" style="background-color: #005AE0;" aria-label="Azul"
+                                            title="Azul"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color4" id="morado4"
+                                        value="Morado">
+                                    <label for="morado4">
+                                        <div class="bloquesColor" style="background-color: #AF1AF4;" aria-label="Morado"
+                                            title="Morado"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color4" id="rosa4"
+                                        value="Rosa">
+                                    <label for="rosa4">
+                                        <div class="bloquesColor" style="background-color: #F01AF4;" aria-label="rosa"
+                                            title="Rosa"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset><!--FIN CONTENEDOR BLOQUE 4-->
+                </div>
+                <div class="contenedorBloques">
+                    <fieldset class="contenedorContenidos"> <!--INICIO CONTENEDOR BLOQUE 5-->
+                        <div class="flexear1">
+                            <p style="text-align: center;font-weight: bold; color: #0e5779;text-decoration: underline;">
+                                BLOQUE 5</p>
+
+                            <label for="inicialesBloques">Nueva inicial 5:</label> <br>
+                            <input type="text" id="inicialesBloques" class="inicialesBloque" maxlength="2">
+
+                            <br><br>
+
+                            <label for="tituloBloques">Nuevo título 5:</label> <br>
+                            <input type="text" id="tituloBloques" class="titulosBloque">
+
+                            <br><br>
+                            <label>Elige el orden del tema:</label>
+                            <br>
+                            <select class="ordenTemas">
+                                <option value="">Selecciona un tema</option>
+                                <option value="Tema1">TEMA 1</option>
+                                <option value="Tema2">TEMA 2</option>
+                                <option value="Tema3">TEMA 3</option>
+                                <option value="Tema4">TEMA 4</option>
+                                <option value="Tema5">TEMA 5</option>
+                                <option value="Tema6">TEMA 6</option>
+                                <option value="Tema7">TEMA 7</option>
+                                <option value="Tema8">TEMA 8</option>
+                                <option value="Tema9">TEMA 9</option>
+                            </select>
+                            <br><br>
+                        </div>
+                        <div class="flexear2">
+                            <label>Elige el color del bloque 5:</label>
+                            <p></p>
+                            <div class="espacio">
+                                <!--Para que los input radios y divs de color aparezcan a la derecha-->
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color5" id="rojo5"
+                                        value="Rojo">
+                                    <label for="rojo5">
+                                        <div class="bloquesColor" style="background-color: #FE0000;" aria-label="Rojo"
+                                            title="Rojo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color5" id="naranja5"
+                                        value="Naranja">
+                                    <label for="naranja5">
+                                        <div class="bloquesColor" style="background-color: #FF9901;"
+                                            aria-label="Naranja" title="Naranja"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color5" id="amarillo5"
+                                        value="Amarillo">
+                                    <label for="amarillo5">
+                                        <div class="bloquesColor" style="background-color: #F9D101;"
+                                            aria-label="Amarillo" title="Amarillo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color5" id="verde5"
+                                        value="Verde">
+                                    <label for="verde5">
+                                        <div class="bloquesColor" style="background-color: #60E53F;" aria-label="Verde"
+                                            title="Verde"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color5" id="turquesa5"
+                                        value="Turquesa">
+                                    <label for="turquesa5">
+                                        <div class="bloquesColor" style="background-color: #00D2A0;"
+                                            aria-label="turquesa" title="Turquesa"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color5" id="celeste5"
+                                        value="Celeste">
+                                    <label for="celeste5">
+                                        <div class="bloquesColor" style="background-color: #00C5E0;"
+                                            aria-label="Celeste" title="Celeste"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color5" id="azul5"
+                                        value="Azul">
+                                    <label for="azul5">
+                                        <div class="bloquesColor" style="background-color: #005AE0;" aria-label="Azul"
+                                            title="Azul"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color5" id="morado5"
+                                        value="Morado">
+                                    <label for="morado5">
+                                        <div class="bloquesColor" style="background-color: #AF1AF4;" aria-label="Morado"
+                                            title="Morado"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color5" id="rosa5"
+                                        value="Rosa">
+                                    <label for="rosa5">
+                                        <div class="bloquesColor" style="background-color: #F01AF4;" aria-label="rosa"
+                                            title="Rosa"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset><!--FIN CONTENEDOR BLOQUE 5-->
+                </div>
+                <div class="contenedorBloques">
+                    <fieldset class="contenedorContenidos"> <!--INICIO CONTENEDOR BLOQUE 6-->
+                        <div class="flexear1">
+                            <p style="text-align: center;font-weight: bold; color: #0e5779;text-decoration: underline;">
+                                BLOQUE 6</p>
+
+                            <label for="inicialesBloques">Nueva inicial 6:</label> <br>
+                            <input type="text" id="inicialesBloques" class="inicialesBloque" maxlength="2">
+
+                            <br><br>
+
+                            <label for="tituloBloques">Nuevo título 6:</label> <br>
+                            <input type="text" id="tituloBloques" class="titulosBloque">
+
+                            <br><br>
+                            <label>Elige el orden del tema:</label>
+                            <br>
+                            <select class="ordenTemas">
+                                <option value="">Selecciona un tema</option>
+                                <option value="Tema1">TEMA 1</option>
+                                <option value="Tema2">TEMA 2</option>
+                                <option value="Tema3">TEMA 3</option>
+                                <option value="Tema4">TEMA 4</option>
+                                <option value="Tema5">TEMA 5</option>
+                                <option value="Tema6">TEMA 6</option>
+                                <option value="Tema7">TEMA 7</option>
+                                <option value="Tema8">TEMA 8</option>
+                                <option value="Tema9">TEMA 9</option>
+                            </select>
+                            <br><br>
+                        </div>
+                        <div class="flexear2">
+                            <label>Elige el color del bloque 6:</label>
+                            <p></p>
+                            <div class="espacio">
+                                <!--Para que los input radios y divs de color aparezcan a la derecha-->
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color6" id="rojo6"
+                                        value="Rojo">
+                                    <label for="rojo6">
+                                        <div class="bloquesColor" style="background-color: #FE0000;" aria-label="Rojo"
+                                            title="Rojo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color6" id="naranja6"
+                                        value="Naranja">
+                                    <label for="naranja6">
+                                        <div class="bloquesColor" style="background-color: #FF9901;"
+                                            aria-label="Naranja" title="Naranja"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color6" id="amarillo6"
+                                        value="Amarillo">
+                                    <label for="amarillo6">
+                                        <div class="bloquesColor" style="background-color: #F9D101;"
+                                            aria-label="Amarillo" title="Amarillo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color6" id="verde6"
+                                        value="Verde">
+                                    <label for="verde6">
+                                        <div class="bloquesColor" style="background-color: #60E53F;" aria-label="Verde"
+                                            title="Verde"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color6" id="turquesa6"
+                                        value="Turquesa">
+                                    <label for="turquesa6">
+                                        <div class="bloquesColor" style="background-color: #00D2A0;"
+                                            aria-label="turquesa" title="Turquesa"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color6" id="celeste6"
+                                        value="Celeste">
+                                    <label for="celeste6">
+                                        <div class="bloquesColor" style="background-color: #00C5E0;"
+                                            aria-label="Celeste" title="Celeste"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color6" id="azul6"
+                                        value="Azul">
+                                    <label for="azul6">
+                                        <div class="bloquesColor" style="background-color: #005AE0;" aria-label="Azul"
+                                            title="Azul"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color6" id="morado6"
+                                        value="Morado">
+                                    <label for="morado6">
+                                        <div class="bloquesColor" style="background-color: #AF1AF4;" aria-label="Morado"
+                                            title="Morado"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color6" id="rosa6"
+                                        value="Rosa">
+                                    <label for="rosa6">
+                                        <div class="bloquesColor" style="background-color: #F01AF4;" aria-label="rosa"
+                                            title="Rosa"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset><!--FIN CONTENEDOR BLOQUE 6-->
+                </div>
+                <div class="contenedorBloques">
+                    <fieldset class="contenedorContenidos"> <!--INICIO CONTENEDOR BLOQUE 7-->
+                        <div class="flexear1">
+                            <p style="text-align: center;font-weight: bold; color: #0e5779;text-decoration: underline;">
+                                BLOQUE 7</p>
+
+                            <label for="inicialesBloques">Nueva inicial 7:</label> <br>
+                            <input type="text" id="inicialesBloques" class="inicialesBloque" maxlength="2">
+
+                            <br><br>
+
+                            <label for="tituloBloques">Nuevo título 7:</label> <br>
+                            <input type="text" id="tituloBloques" class="titulosBloque">
+
+                            <br><br>
+                            <label>Elige el orden del tema:</label>
+                            <br>
+                            <select class="ordenTemas">
+                                <option value="">Selecciona un tema</option>
+                                <option value="Tema1">TEMA 1</option>
+                                <option value="Tema2">TEMA 2</option>
+                                <option value="Tema3">TEMA 3</option>
+                                <option value="Tema4">TEMA 4</option>
+                                <option value="Tema5">TEMA 5</option>
+                                <option value="Tema6">TEMA 6</option>
+                                <option value="Tema7">TEMA 7</option>
+                                <option value="Tema8">TEMA 8</option>
+                                <option value="Tema9">TEMA 9</option>
+                            </select>
+                            <br><br>
+                        </div>
+                        <div class="flexear2">
+                            <label>Elige el color del bloque 7:</label>
+                            <p></p>
+                            <div class="espacio">
+                                <!--Para que los input radios y divs de color aparezcan a la derecha-->
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color7" id="rojo7"
+                                        value="Rojo">
+                                    <label for="rojo7">
+                                        <div class="bloquesColor" style="background-color: #FE0000;" aria-label="Rojo"
+                                            title="Rojo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color7" id="naranja7"
+                                        value="Naranja">
+                                    <label for="naranja7">
+                                        <div class="bloquesColor" style="background-color: #FF9901;"
+                                            aria-label="Naranja" title="Naranja"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color7" id="amarillo7"
+                                        value="Amarillo">
+                                    <label for="amarillo7">
+                                        <div class="bloquesColor" style="background-color: #F9D101;"
+                                            aria-label="Amarillo" title="Amarillo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color7" id="verde7"
+                                        value="Verde">
+                                    <label for="verde7">
+                                        <div class="bloquesColor" style="background-color: #60E53F;" aria-label="Verde"
+                                            title="Verde"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color7" id="turquesa7"
+                                        value="Turquesa">
+                                    <label for="turquesa7">
+                                        <div class="bloquesColor" style="background-color: #00D2A0;"
+                                            aria-label="turquesa" title="Turquesa"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color7" id="celeste7"
+                                        value="Celeste">
+                                    <label for="celeste7">
+                                        <div class="bloquesColor" style="background-color: #00C5E0;"
+                                            aria-label="Celeste" title="Celeste"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color7" id="azul7"
+                                        value="Azul">
+                                    <label for="azul7">
+                                        <div class="bloquesColor" style="background-color: #005AE0;" aria-label="Azul"
+                                            title="Azul"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color7" id="morado7"
+                                        value="Morado">
+                                    <label for="morado7">
+                                        <div class="bloquesColor" style="background-color: #AF1AF4;" aria-label="Morado"
+                                            title="Morado"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color7" id="rosa7"
+                                        value="Rosa">
+                                    <label for="rosa7">
+                                        <div class="bloquesColor" style="background-color: #F01AF4;" aria-label="rosa"
+                                            title="Rosa"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset><!--FIN CONTENEDOR BLOQUE 7-->
+                </div>
+                <div class="contenedorBloques">
+                    <fieldset class="contenedorContenidos"> <!--INICIO CONTENEDOR BLOQUE 8-->
+                        <div class="flexear1">
+                            <p style="text-align: center;font-weight: bold; color: #0e5779;text-decoration: underline;">
+                                BLOQUE 8</p>
+
+                            <label for="inicialesBloques">Nueva inicial 8:</label> <br>
+                            <input type="text" id="inicialesBloques" class="inicialesBloque" maxlength="2">
+
+                            <br><br>
+
+                            <label for="tituloBloques">Nuevo título 8:</label> <br>
+                            <input type="text" id="tituloBloques" class="titulosBloque">
+
+                            <br><br>
+                            <label>Elige el orden del tema:</label>
+                            <br>
+                            <select class="ordenTemas">
+                                <option value="">Selecciona un tema</option>
+                                <option value="Tema1">TEMA 1</option>
+                                <option value="Tema2">TEMA 2</option>
+                                <option value="Tema3">TEMA 3</option>
+                                <option value="Tema4">TEMA 4</option>
+                                <option value="Tema5">TEMA 5</option>
+                                <option value="Tema6">TEMA 6</option>
+                                <option value="Tema7">TEMA 7</option>
+                                <option value="Tema8">TEMA 8</option>
+                                <option value="Tema9">TEMA 9</option>
+                            </select>
+                            <br><br>
+                        </div>
+                        <div class="flexear2">
+                            <label>Elige el color del bloque 8:</label>
+                            <p></p>
+                            <div class="espacio">
+                                <!--Para que los input radios y divs de color aparezcan a la derecha-->
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color8" id="rojo8"
+                                        value="Rojo">
+                                    <label for="rojo8">
+                                        <div class="bloquesColor" style="background-color: #FE0000;" aria-label="Rojo"
+                                            title="Rojo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color8" id="naranja8"
+                                        value="Naranja">
+                                    <label for="naranja8">
+                                        <div class="bloquesColor" style="background-color: #FF9901;"
+                                            aria-label="Naranja" title="Naranja"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color8" id="amarillo8"
+                                        value="Amarillo">
+                                    <label for="amarillo8">
+                                        <div class="bloquesColor" style="background-color: #F9D101;"
+                                            aria-label="Amarillo" title="Amarillo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color8" id="verde8"
+                                        value="Verde">
+                                    <label for="verde8">
+                                        <div class="bloquesColor" style="background-color: #60E53F;" aria-label="Verde"
+                                            title="Verde"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color8" id="turquesa8"
+                                        value="Turquesa">
+                                    <label for="turquesa8">
+                                        <div class="bloquesColor" style="background-color: #00D2A0;"
+                                            aria-label="turquesa" title="Turquesa"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color8" id="celeste8"
+                                        value="Celeste">
+                                    <label for="celeste8">
+                                        <div class="bloquesColor" style="background-color: #00C5E0;"
+                                            aria-label="Celeste" title="Celeste"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color8" id="azul8"
+                                        value="Azul">
+                                    <label for="azul8">
+                                        <div class="bloquesColor" style="background-color: #005AE0;" aria-label="Azul"
+                                            title="Azul"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color8" id="morado8"
+                                        value="Morado">
+                                    <label for="morado8">
+                                        <div class="bloquesColor" style="background-color: #AF1AF4;" aria-label="Morado"
+                                            title="Morado"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color8" id="rosa8"
+                                        value="Rosa">
+                                    <label for="rosa8">
+                                        <div class="bloquesColor" style="background-color: #F01AF4;" aria-label="rosa"
+                                            title="Rosa"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset><!--FIN CONTENEDOR BLOQUE 8-->
+                </div>
+                <div class="contenedorBloques">
+                    <fieldset class="contenedorContenidos"> <!--INICIO CONTENEDOR BLOQUE 9-->
+                        <div class="flexear1">
+                            <p style="text-align: center;font-weight: bold; color: #0e5779;text-decoration: underline;">
+                                BLOQUE 9</p>
+
+                            <label for="inicialesBloques">Nueva inicial 9:</label> <br>
+                            <input type="text" id="inicialesBloques" class="inicialesBloque" maxlength="2">
+
+                            <br><br>
+
+                            <label for="tituloBloques">Nuevo título 9:</label> <br>
+                            <input type="text" id="tituloBloques" class="titulosBloque">
+
+                            <br><br>
+                            <label>Elige el orden del tema:</label>
+                            <br>
+                            <select class="ordenTemas">
+                                <option value="">Selecciona un tema</option>
+                                <option value="Tema1">TEMA 1</option>
+                                <option value="Tema2">TEMA 2</option>
+                                <option value="Tema3">TEMA 3</option>
+                                <option value="Tema4">TEMA 4</option>
+                                <option value="Tema5">TEMA 5</option>
+                                <option value="Tema6">TEMA 6</option>
+                                <option value="Tema7">TEMA 7</option>
+                                <option value="Tema8">TEMA 8</option>
+                                <option value="Tema9">TEMA 9</option>
+                            </select>
+                            <br><br>
+                        </div>
+                        <div class="flexear2">
+                            <label>Elige el color del bloque 9:</label>
+                            <p></p>
+                            <div class="espacio">
+                                <!--Para que los input radios y divs de color aparezcan a la derecha-->
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color9" id="rojo9"
+                                        value="Rojo">
+                                    <label for="rojo9">
+                                        <div class="bloquesColor" style="background-color: #FE0000;" aria-label="Rojo"
+                                            title="Rojo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color9" id="naranja9"
+                                        value="Naranja">
+                                    <label for="naranja9">
+                                        <div class="bloquesColor" style="background-color: #FF9901;"
+                                            aria-label="Naranja" title="Naranja"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color9" id="amarillo9"
+                                        value="Amarillo">
+                                    <label for="amarillo9">
+                                        <div class="bloquesColor" style="background-color: #F9D101;"
+                                            aria-label="Amarillo" title="Amarillo"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color9" id="verde9"
+                                        value="Verde">
+                                    <label for="verde9">
+                                        <div class="bloquesColor" style="background-color: #60E53F;" aria-label="Verde"
+                                            title="Verde"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color9" id="turquesa9"
+                                        value="Turquesa">
+                                    <label for="turquesa9">
+                                        <div class="bloquesColor" style="background-color: #00D2A0;"
+                                            aria-label="turquesa" title="Turquesa"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color9" id="celeste9"
+                                        value="Celeste">
+                                    <label for="celeste9">
+                                        <div class="bloquesColor" style="background-color: #00C5E0;"
+                                            aria-label="Celeste" title="Celeste"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color9" id="azul9"
+                                        value="Azul">
+                                    <label for="azul9">
+                                        <div class="bloquesColor" style="background-color: #005AE0;" aria-label="Azul"
+                                            title="Azul"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color9" id="morado9"
+                                        value="Morado">
+                                    <label for="morado9">
+                                        <div class="bloquesColor" style="background-color: #AF1AF4;" aria-label="Morado"
+                                            title="Morado"></div>
+                                    </label>
+                                </div>
+
+                                <div class="posicionamiento">
+                                    <input type="radio" class="elegir-color" name="elegir-color9" id="rosa9"
+                                        value="Rosa">
+                                    <label for="rosa9">
+                                        <div class="bloquesColor" style="background-color: #F01AF4;" aria-label="rosa"
+                                            title="Rosa"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset><!--FIN CONTENEDOR BLOQUE 9-->
+                </div>
+            </div> <!--Fin del div con el id "bloque" y la clase class="contenedorBloques"-->
+        </div>
+
+
+    </div>
+</body>
+
+</html>
